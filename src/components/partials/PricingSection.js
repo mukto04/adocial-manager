@@ -6,7 +6,7 @@ export default function PricingSection() {
   return (
     <section className="section pricing-section" id="pricing">
       <div className="wrap">
-        {/* Section Header */}
+        {/* Section Header - Exactly matches "What we do" Services Header */}
         <div className="section-head reveal">
           <div className="section-badge">
             <span className="section-badge-dot"></span>
@@ -18,198 +18,172 @@ export default function PricingSection() {
             <span className="text-gradient">Engineered for real ROI.</span>
           </h2>
           <p>
-            Choose the collaboration model that fits your stage of business. No hidden agency fees,
-            no 12-month handcuffs, and zero vanity metrics.
+            You add us as Manager to your Meta or Google Ads account. We prepare, launch, and optimize every campaign
+            directly from your account based on your goals and budget.
           </p>
         </div>
 
-        {/* 2-Column Luxury Pricing Cards */}
+        {/* 2-Column Luxury Pricing Grid - Built on the same service-card DNA */}
         <div className="pricing-grid">
-          {/* Plan 1: Fixed Monthly Retainer ($300/mo) */}
-          <article className="pricing-card light-plan depth-in">
-            <div className="pricing-card-header">
-              <div className="plan-badge-pill">
-                <span>FIXED MONTHLY RETAINER</span>
-              </div>
-              <h3 className="plan-name">Monthly Growth Management</h3>
-              <p className="plan-desc">
-                Ideal for ambitious businesses looking for structured, hands-on campaign execution with
-                a predictable monthly cost.
-              </p>
-
-              <div className="price-box">
-                <span className="price-currency">$</span>
-                <span className="price-amount">300</span>
-                <span className="price-period">/ month</span>
-              </div>
-              <span className="price-subtext">Flat retainer · Zero hidden surprises</span>
+          {/* Card 1: Fixed Monthly Retainer ($300/mo) */}
+          <article className="pricing-card service-card depth-in">
+            <span className="card-sheen" aria-hidden="true"></span>
+            
+            <div className="pricing-card-top">
+              <span className="service-number">01 / FIXED MONTHLY</span>
+              <span className="pricing-mini-badge">Fixed Rate</span>
             </div>
 
-            <div className="pricing-divider"></div>
-
-            <div className="pricing-features">
-              <h4 className="features-title">WHAT’S INCLUDED:</h4>
-              <ul className="features-list">
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>Full Meta Ads Management:</strong> Facebook & Instagram Advantage+ setup and scaling.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>Google Search & PMax:</strong> Intent-focused search campaigns and keyword bidding.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>Server-Side CAPI Tracking:</strong> 100% signal verification & deduplication.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>Weekly Loom Video Briefs:</strong> Honest, zero-jargon metric walkthroughs.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>7-Day Creative Sprints:</strong> Fresh hooks, ad angles, and visual tests deployed weekly.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>Direct Media Buyer Access:</strong> Direct communication via WhatsApp & email.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>100% Root Ownership:</strong> You retain full root access to all pixels, assets, and accounts.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>Zero Lock-in Contract:</strong> Rolling 30-day trust agreements. Pause or cancel anytime.
-                  </div>
-                </li>
-              </ul>
+            <div className="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
             </div>
 
-            <div className="pricing-card-footer">
-              <a href="#contact" className="btn light pricing-cta-btn">
-                Get started monthly <span>↗</span>
+            <h3>Monthly Dedicated Ads Manager</h3>
+
+            <div className="pricing-rate-lockup">
+              <span className="pricing-rate-amount">$300</span>
+              <span className="pricing-rate-period">/ month</span>
+            </div>
+            
+            <p className="pricing-rate-desc">
+              Hire us as your remote Ads Manager. You add us to your Meta or Google Ads account, and we build, launch,
+              and optimize whatever campaigns you need directly from your account.
+            </p>
+
+            <div className="pricing-card-divider"></div>
+
+            <ul className="pricing-service-list">
+              <li>
+                <span className="pricing-check">✓</span>
+                <span><strong>Added as Manager:</strong> Invite us into your Meta (FB &amp; IG) or Google Ads Manager</span>
+              </li>
+              <li>
+                <span className="pricing-check">✓</span>
+                <span><strong>Any Campaign Type:</strong> Leads, E-commerce sales, WhatsApp chats, calls, or traffic</span>
+              </li>
+              <li>
+                <span className="pricing-check">✓</span>
+                <span><strong>Your Own Account:</strong> 100% of ad spend is billed to your card with zero agency markup</span>
+              </li>
+              <li>
+                <span className="pricing-check">✓</span>
+                <span><strong>Complete Execution:</strong> Audience targeting, ad copy, creative setup &amp; CAPI tracking</span>
+              </li>
+              <li>
+                <span className="pricing-check">✓</span>
+                <span><strong>Daily Optimization:</strong> Monitoring, budget adjustments &amp; pausing underperforming ads</span>
+              </li>
+              <li>
+                <span className="pricing-check">✓</span>
+                <span><strong>Weekly Reporting:</strong> Transparent updates and video audits via WhatsApp or Loom</span>
+              </li>
+              <li>
+                <span className="pricing-check">✓</span>
+                <span><strong>Rolling 30 Days:</strong> No long-term lock-in contracts. Cancel or pause anytime</span>
+              </li>
+            </ul>
+
+            <div className="pricing-card-action">
+              <a className="btn light pricing-btn" href="#contact">
+                Hire dedicated manager ($300/mo) <span>↗</span>
               </a>
-              <span className="guarantee-note">Quick 3-day onboarding · No setup fee</span>
             </div>
+
+            <div className="card-watermark"></div>
           </article>
 
-          {/* Plan 2: Performance Growth Partner (10% - 15%) */}
-          <article className="pricing-card featured-plan depth-in delay-1">
-            <div className="plan-aurora-glow" aria-hidden="true"></div>
-            <div className="popular-ribbon">
-              <span className="popular-star">★</span>
-              <span>SCALING PARTNERSHIP</span>
+          {/* Card 2: Part-Time / Performance Partner (10% - 15%) */}
+          <article className="pricing-card service-card depth-in delay-1 popular-tier">
+            <span className="card-sheen" aria-hidden="true"></span>
+
+            <div className="pricing-card-top">
+              <span className="service-number">02 / SPEND SHARE</span>
+              <span className="pricing-mini-badge highlight">★ Recommended</span>
             </div>
 
-            <div className="pricing-card-header">
-              <div className="plan-badge-pill highlight">
-                <span className="live-pulse-dot"></span>
-                <span>PERFORMANCE / SPEND SHARE</span>
-              </div>
-              <h3 className="plan-name">Performance Scale Partner</h3>
-              <p className="plan-desc">
-                Ideal for established e-commerce brands and scaling companies who want aggressive growth with aligned incentives.
-              </p>
-
-              <div className="price-box">
-                <span className="price-amount gradient-text">10% – 15%</span>
-                <span className="price-period">/ total ad spend</span>
-              </div>
-              <span className="price-subtext">Tied directly to your volume and profitability</span>
+            <div className="service-icon performance-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M22 7 13.5 15.5 8.5 10.5 2 17" />
+                <path d="M16 7h6v6" />
+              </svg>
             </div>
 
-            <div className="pricing-divider"></div>
+            <h3>Part-Time / Performance Partner</h3>
 
-            <div className="pricing-features">
-              <h4 className="features-title">EVERYTHING IN MONTHLY, PLUS:</h4>
-              <ul className="features-list">
-                <li>
-                  <span className="check-icon highlight">✓</span>
-                  <div>
-                    <strong>Senior Media Buyer & Strategist:</strong> Dedicated veteran media buyer for your brand.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon highlight">✓</span>
-                  <div>
-                    <strong>Daily Bid & Budget Pacing:</strong> Real-time budget reallocation to highest-performing ad sets.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon highlight">✓</span>
-                  <div>
-                    <strong>Unlimited Spend Scaling:</strong> Smooth scaling without tiered agency management penalty fees.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon highlight">✓</span>
-                  <div>
-                    <strong>High-Velocity Creative Pipeline:</strong> UGC script briefs, video iterations, and motion ads.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon highlight">✓</span>
-                  <div>
-                    <strong>Landing Page & CRO Audits:</strong> Conversion rate reviews to maximize ROAS on post-click traffic.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon highlight">✓</span>
-                  <div>
-                    <strong>Multi-Touch Attribution:</strong> GA4 & first-party attribution modeling for accurate CAC.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon highlight">✓</span>
-                  <div>
-                    <strong>Priority VIP Channel:</strong> Dedicated private Slack/WhatsApp channel with sub-2hr response.
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon highlight">✓</span>
-                  <div>
-                    <strong>Skin-in-the-Game Alignment:</strong> Our agency revenue grows only when your ad spend scales profitably.
-                  </div>
-                </li>
-              </ul>
+            <div className="pricing-rate-lockup">
+              <span className="pricing-rate-amount highlight">10% – 15%</span>
+              <span className="pricing-rate-period">/ total ad spend</span>
             </div>
 
-            <div className="pricing-card-footer">
-              <a href="#contact" className="btn primary pricing-cta-btn highlight">
-                Apply for performance partnership <span>↗</span>
+            <p className="pricing-rate-desc">
+              Flexible part-time management tied directly to your spend volume. You add us as Manager to your ad account,
+              and we manage, test, and scale your campaigns for an aligned share of ad spend.
+            </p>
+
+            <div className="pricing-card-divider"></div>
+
+            <ul className="pricing-service-list">
+              <li>
+                <span className="pricing-check highlight">✓</span>
+                <span><strong>Flexible Spend Model:</strong> Pay only 10%–15% based on your actual monthly ad spend</span>
+              </li>
+              <li>
+                <span className="pricing-check highlight">✓</span>
+                <span><strong>Added as Manager:</strong> Full direct management inside your Meta or Google ad accounts</span>
+              </li>
+              <li>
+                <span className="pricing-check highlight">✓</span>
+                <span><strong>Your Own Account:</strong> Transparent ad spend billed directly to your payment method</span>
+              </li>
+              <li>
+                <span className="pricing-check highlight">✓</span>
+                <span><strong>Full Funnel Strategy:</strong> Top-of-funnel reach, retargeting pools &amp; Lookalike scaling</span>
+              </li>
+              <li>
+                <span className="pricing-check highlight">✓</span>
+                <span><strong>High-Velocity Testing:</strong> Continuous creative, hook &amp; ad angle experimentation</span>
+              </li>
+              <li>
+                <span className="pricing-check highlight">✓</span>
+                <span><strong>Daily Budget Pacing:</strong> Reallocating spend to winning ad sets to maximize ROAS</span>
+              </li>
+              <li>
+                <span className="pricing-check highlight">✓</span>
+                <span><strong>Priority Direct Access:</strong> Fast communication via WhatsApp or email</span>
+              </li>
+            </ul>
+
+            <div className="pricing-card-action">
+              <a className="btn primary pricing-btn" href="#contact">
+                Start performance partnership <span>↗</span>
               </a>
-              <span className="guarantee-note">Accepting 2 partners this month · Qualification call required</span>
             </div>
+
+            <div className="card-watermark"></div>
           </article>
         </div>
 
         {/* Micro Trust Strip under pricing */}
         <div className="pricing-trust-strip reveal">
           <div className="trust-item">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#2563eb" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
             <span>100% Ad Account Ownership</span>
           </div>
           <div className="trust-sep">·</div>
           <div className="trust-item">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#2563eb" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+              <line x1="1" y1="10" x2="23" y2="10" />
+            </svg>
+            <span>You Control Ad Budget on Your Card</span>
+          </div>
+          <div className="trust-sep">·</div>
+          <div className="trust-item">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#2563eb" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
             </svg>
@@ -217,23 +191,14 @@ export default function PricingSection() {
           </div>
           <div className="trust-sep">·</div>
           <div className="trust-item">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
-            <span>Zero Long-Term Lock-in</span>
-          </div>
-          <div className="trust-sep">·</div>
-          <div className="trust-item">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#2563eb" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
               <polyline points="22 4 12 14.01 9 11.01" />
             </svg>
-            <span>Weekly Video Audits</span>
+            <span>Weekly Transparent Reports</span>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
