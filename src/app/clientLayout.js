@@ -9,6 +9,9 @@ export default function ClientLayout({ children }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#f8faff" />
+        <link rel="icon" type="image/png" href="/images/logo/favicon.png" />
+        <link rel="shortcut icon" type="image/png" href="/images/logo/favicon.png" />
+        <link rel="apple-touch-icon" href="/images/logo/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
