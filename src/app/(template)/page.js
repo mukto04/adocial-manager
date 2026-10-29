@@ -8,8 +8,8 @@ import Image from "next/image";
 import logo from "@public/images/logo/logo.png";
 import PlatformStrip from "@/components/partials/PlatformStrip";
 import ProcessSection from "@/components/partials/ProcessSection";
-import HeroAdPortal from "@/components/partials/HeroAdPortal";
 import PricingSection from "@/components/partials/PricingSection";
+import HeroVideoShowcase from "@/components/partials/HeroVideoShowcase";
 import Footer from "@/components/partials/Footer";
 
 const ROTATING_WORDS = [
@@ -258,35 +258,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div
-              className="scene reveal-right"
-              aria-label="Interactive live advertising showcase displaying Meta, Instagram, and Google Ads"
-            >
-              <div className="scene-grid"></div>
-              <div className="scene-ring"></div>
-              <div className="scene-ring r2"></div>
-              <div className="scene-ring r3"></div>
-              <div className="orbital-dot"></div>
-              <div className="orbital-dot d2"></div>
-              <div className="sculpture" id="sculpture">
-                <div className="shadow"></div>
-                <div className="orb">
-                  <HeroAdPortal />
-                </div>
-                <div className="orb-ring"></div>
-                <div className="orb-ring ring2"></div>
-                <div className="orb-ring ring3"></div>
-              </div>
-              <div className="scene-label label-a">
-                <b>Live Ad Delivery</b>
-                <small>Meta Advantage+ & Google PMax</small>
-              </div>
-              <div className="scene-label label-b">
-                <b>ROAS 4.8X Target</b>
-                <small>1st-party signal verification</small>
-              </div>
-              <div className="scene-label label-c">OMNICHANNEL MEDIA DESK</div>
-            </div>
+            <HeroVideoShowcase />
           </div>
         </section>
 
