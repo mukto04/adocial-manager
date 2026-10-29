@@ -1,163 +1,142 @@
 "use client";
 
-import Link from "next/link";
+import React from "react";
 import Image from "next/image";
-import { ArrowUpRight, MessageSquare, Mail, Globe, Shield } from "lucide-react";
-import { siteConfig } from "@/config/siteConfig";
+import Link from "next/link";
+import logo from "../../../public/images/logo/logo.png";
 
-// Images
-import logo from "@public/images/logo/logo.png";
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
-export default function Footer({ onOpenBooking }) {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-slate-50 border-t border-slate-200/80 text-charcoal pt-16 pb-12">
-      <div className="max-w-[1360px] mx-auto px-6 lg:px-10">
-        
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-slate-200">
-          
-          {/* Column 1: Brand & Tagline (5 cols) */}
-          <div className="lg:col-span-5 space-y-5">
-            <Link href="/" className="inline-block">
+    <footer className="footer-luxury">
+      {/* Subtle ambient light glows */}
+      <div className="footer-ambient-glow glow-1" aria-hidden="true"></div>
+      <div className="footer-ambient-glow glow-2" aria-hidden="true"></div>
+
+      <div className="wrap footer-wrap">
+        {/* Top Utility Bar */}
+        <div className="footer-utility-bar">
+          <button
+            onClick={scrollToTop}
+            className="footer-back-to-top"
+            aria-label="Back to top of page"
+          >
+            <span>Back to top</span>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Clean, Spacious 4-Column Layout */}
+        <div className="footer-main-grid">
+          {/* Column 1: Brand & Direct Line */}
+          <div className="footer-col-brand">
+            <Link href="#home" className="footer-brand-logo" aria-label="Adocial home">
               <Image
                 src={logo}
                 alt="Adocial"
-                quality={100}
-                className="h-8 sm:h-9 w-auto object-contain"
+                priority
+                className="h-8 w-auto object-contain"
               />
             </Link>
-
-            <p className="text-sm text-slate-600 font-normal leading-relaxed max-w-sm">
-              Performance advertising agency partnering with ambitious businesses across the USA, UK, Canada, Australia, and international markets. We turn ad spend into smarter, predictable commercial growth.
+            <p className="footer-brand-bio">
+              Thoughtful performance advertising engineered to scale ambitious brands with clarity,
+              rigorous testing, and predictable revenue.
             </p>
 
-            <div className="pt-1 flex flex-col space-y-2 text-xs text-slate-500 font-medium">
-              <div className="flex items-center gap-2">
-                <Globe className="w-3.5 h-3.5 text-cobalt-600" />
-                <span>Operating Timezones: {siteConfig.contact.officeTimezones}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-cobalt-600" />
-                <span>Direct Inquiries: <a href={`mailto:${siteConfig.contact.email}`} className="text-charcoal hover:underline">{siteConfig.contact.email}</a></span>
-              </div>
-            </div>
-          </div>
-
-          {/* Column 2: Services (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-charcoal block">
-              Core Capabilities
-            </span>
-            <ul className="space-y-2.5 text-xs text-slate-600 font-medium">
-              <li>
-                <a href="#services" className="hover:text-cobalt-600 transition-colors">
-                  Meta Ads Management (FB &amp; IG)
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-cobalt-600 transition-colors">
-                  Google Search &amp; Performance Max
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-cobalt-600 transition-colors">
-                  Server-Side CAPI Tracking (Cloudflare)
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-cobalt-600 transition-colors">
-                  Dynamic Creative Testing (DCT)
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-cobalt-600 transition-colors">
-                  Attribution &amp; Looker Studio Reporting
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Navigation & Company (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-charcoal block">
-              Company
-            </span>
-            <ul className="space-y-2.5 text-xs text-slate-600 font-medium">
-              <li>
-                <a href="#approach" className="hover:text-cobalt-600 transition-colors">
-                  Our Approach
-                </a>
-              </li>
-              <li>
-                <a href="#intelligence" className="hover:text-cobalt-600 transition-colors">
-                  Intelligence
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-cobalt-600 transition-colors">
-                  About Adocial
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-cobalt-600 transition-colors">
-                  Frequently Asked
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Contact & Engagement (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-charcoal block">
-              Connect
-            </span>
-            <div className="space-y-2.5">
-              <button
-                onClick={onOpenBooking}
-                className="w-full text-left text-xs font-bold text-cobalt-600 hover:text-cobalt-700 flex items-center justify-between py-1"
-              >
-                <span>Book a Call</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </button>
+            <div className="footer-connect-row">
               <a
-                href={siteConfig.contact.whatsappLink}
+                href="https://wa.me/YOUR_PHONE_NUMBER"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-left text-xs font-semibold text-emerald-700 hover:text-emerald-800 flex items-center justify-between py-1"
+                className="footer-connect-pill"
               >
-                <span>WhatsApp Chat</span>
-                <MessageSquare className="w-3.5 h-3.5" />
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.07c-.24.67-1.39 1.28-1.92 1.34-.51.06-1.17.09-3.76-.98-3.15-1.3-5.18-4.52-5.34-4.73-.16-.21-1.28-1.7-1.28-3.24 0-1.54.81-2.29 1.1-2.6.29-.31.64-.39.85-.39.21 0 .43 0 .61.01.2.01.46-.07.72.55.26.62.9 2.19.98 2.35.08.16.13.35.03.56-.1.21-.15.34-.3.51-.15.17-.32.38-.45.51-.15.15-.31.31-.13.62.18.31.8 1.32 1.72 2.14 1.18 1.05 2.18 1.37 2.49 1.52.31.15.49.13.67-.08.18-.21.77-.9 1-.1.21.23.41.28.69.15.28-.13 1.77-.83 2.07-.98.3-.15.51-.23.59-.36.08-.13.08-.77-.16-1.44z" />
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+              <a
+                href="mailto:YOUR_EMAIL@example.com?subject=Adocial%20Strategy%20Inquiry"
+                className="footer-connect-pill"
+              >
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span>Email Team</span>
               </a>
             </div>
           </div>
 
-        </div>
-
-        {/* Bottom Legal & Copyright Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div>
-            © {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.
+          {/* Column 2: Navigation */}
+          <div className="footer-col">
+            <h4 className="footer-col-title">Navigation</h4>
+            <ul className="footer-nav-list">
+              <li><a href="#services">Services <span>↗</span></a></li>
+              <li><a href="#approach">Our Approach <span>↗</span></a></li>
+              <li><a href="#insights">Our Thinking <span>↗</span></a></li>
+              <li><a href="#faq">FAQ <span>↗</span></a></li>
+            </ul>
           </div>
 
-          <div className="flex items-center gap-6 font-medium text-slate-500">
-            <button
-              onClick={onOpenBooking}
-              className="hover:text-charcoal transition-colors"
-            >
-              Privacy Policy
-            </button>
-            <span>•</span>
-            <button
-              onClick={onOpenBooking}
-              className="hover:text-charcoal transition-colors"
-            >
-              Terms of Service
-            </button>
-            <span>•</span>
-            <span>adocial.com</span>
+          {/* Column 3: Advertising Channels */}
+          <div className="footer-col">
+            <h4 className="footer-col-title">Channels</h4>
+            <ul className="footer-nav-list">
+              <li><a href="#services">Meta Ads (Facebook & IG)</a></li>
+              <li><a href="#services">Google Search & PMax</a></li>
+              <li><a href="#services">YouTube Action Ads</a></li>
+              <li><a href="#services">Conversion Tracking & CAPI</a></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Engagement */}
+          <div className="footer-col">
+            <h4 className="footer-col-title">Get In Touch</h4>
+            <ul className="footer-nav-list">
+              <li>
+                <a href="#contact" className="footer-highlight-link">
+                  Book Strategy Call <span>↗</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" rel="noopener noreferrer">
+                  Quick WhatsApp Chat
+                </a>
+              </li>
+              <li>
+                <a href="mailto:YOUR_EMAIL@example.com">
+                  Direct Partnership Mail
+                </a>
+              </li>
+            </ul>
+            <div className="footer-response-tag">
+              <span className="response-dot"></span>
+              <span>Avg. response under 2 hours</span>
+            </div>
           </div>
         </div>
 
+        {/* Big Subtle Architectural Watermark */}
+        <div className="footer-giant-watermark" aria-hidden="true">
+          <span>ADOCIAL</span>
+        </div>
+
+        {/* Bottom Legal Bar */}
+        <div className="footer-bottom-bar">
+          <div className="footer-copyright">
+            <span suppressHydrationWarning>© {currentYear} Adocial. All rights reserved.</span>
+            <span className="footer-sep">·</span>
+            <span>Performance Advertising Agency</span>
+          </div>
+        </div>
       </div>
     </footer>
   );
