@@ -2,9 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Menu, X, MessageSquare } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
+
+// Images
+import logo from "@public/images/logo/logo.png";
 
 export default function Header({ onOpenBooking }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,11 +32,12 @@ export default function Header({ onOpenBooking }) {
     >
       <div className="max-w-[1360px] mx-auto px-6 lg:px-10 flex items-center justify-between">
         {/* Adocial Official Logo */}
-        <Link href="/" className="flex items-center group">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/logo.png"
+        <Link href="/" className="inline-block group">
+          <Image
+            src={logo}
             alt="Adocial - Performance Advertising Agency"
+            quality={100}
+            priority
             className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-[1.02]"
           />
         </Link>

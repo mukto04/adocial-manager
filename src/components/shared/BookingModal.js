@@ -1,11 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle2, ArrowRight, MessageSquare, ShieldCheck, Sparkles, Send } from "lucide-react";
 import toast from "react-hot-toast";
 import confetti from "canvas-confetti";
 import { siteConfig } from "@/config/siteConfig";
+
+// Images
+import logo from "@public/images/logo/logo.png";
 
 export default function BookingModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
@@ -113,8 +117,12 @@ export default function BookingModal({ isOpen, onClose }) {
           <div>
             {/* Header */}
             <div className="mb-6">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt="Adocial" className="h-7 w-auto object-contain mb-3" />
+              <Image
+                src={logo}
+                alt="Adocial"
+                quality={100}
+                className="h-7 w-auto object-contain mb-3"
+              />
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cobalt-50 text-cobalt-700 text-[10px] font-bold uppercase tracking-wider mb-2">
                 <Sparkles className="w-3 h-3" />
                 <span>Free 15-Minute Strategy Review</span>

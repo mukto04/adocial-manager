@@ -39,7 +39,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/logo.png",
+        url: "/images/logo/logo.png",
         width: 300,
         height: 78,
         alt: "Adocial",
@@ -47,9 +47,9 @@ export const metadata = {
     ],
   },
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon.png",
+    icon: "/images/logo/favicon.png",
+    shortcut: "/images/logo/favicon.png",
+    apple: "/images/logo/favicon.png",
   },
 };
 

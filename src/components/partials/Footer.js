@@ -1,8 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, MessageSquare, Mail, Globe, Shield } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
+
+// Images
+import logo from "@public/images/logo/logo.png";
 
 export default function Footer({ onOpenBooking }) {
   return (
@@ -15,10 +19,10 @@ export default function Footer({ onOpenBooking }) {
           {/* Column 1: Brand & Tagline (5 cols) */}
           <div className="lg:col-span-5 space-y-5">
             <Link href="/" className="inline-block">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/logo.png"
+              <Image
+                src={logo}
                 alt="Adocial"
+                quality={100}
                 className="h-8 sm:h-9 w-auto object-contain"
               />
             </Link>
