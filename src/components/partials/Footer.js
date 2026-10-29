@@ -82,6 +82,7 @@ export default function Footer() {
               <li><a href="#services">Services <span>↗</span></a></li>
               <li><a href="#approach">Our Approach <span>↗</span></a></li>
               <li><a href="#insights">Our Thinking <span>↗</span></a></li>
+              <li><a href="#pricing">Pricing <span>↗</span></a></li>
               <li><a href="#faq">FAQ <span>↗</span></a></li>
             </ul>
           </div>

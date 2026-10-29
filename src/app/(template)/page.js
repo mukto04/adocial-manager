@@ -9,6 +9,7 @@ import logo from "@public/images/logo/logo.png";
 import PlatformStrip from "@/components/partials/PlatformStrip";
 import ProcessSection from "@/components/partials/ProcessSection";
 import HeroAdPortal from "@/components/partials/HeroAdPortal";
+import PricingSection from "@/components/partials/PricingSection";
 import Footer from "@/components/partials/Footer";
 
 const ROTATING_WORDS = [
@@ -166,6 +167,9 @@ export default function HomePage() {
             </a>
             <a href="#insights" onClick={handleLinkClick}>
               Our thinking
+            </a>
+            <a href="#pricing" onClick={handleLinkClick}>
+              Pricing
             </a>
             <a href="#faq" onClick={handleLinkClick}>
               FAQ
@@ -507,6 +511,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* ─── Transparent Pricing Section ─── */}
+        <PricingSection />
 
         {/* ─── FAQ Section ─── */}
         <section className="section faq-section" id="faq">
