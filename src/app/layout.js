@@ -37,9 +37,19 @@ export const metadata = {
     siteName: "Adocial",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 300,
+        height: 78,
+        alt: "Adocial",
+      },
+    ],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
 };
 

@@ -14,13 +14,13 @@ export default function Footer({ onOpenBooking }) {
           
           {/* Column 1: Brand & Tagline (5 cols) */}
           <div className="lg:col-span-5 space-y-5">
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-cobalt-600 flex items-center justify-center text-white font-bold text-base shadow-sm">
-                A
-              </div>
-              <span className="font-display font-extrabold text-2xl text-charcoal tracking-tight">
-                Adocial<span className="text-cobalt-600">.</span>
-              </span>
+            <Link href="/" className="inline-block">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo.png"
+                alt="Adocial"
+                className="h-8 sm:h-9 w-auto object-contain"
+              />
             </Link>
 
             <p className="text-sm text-slate-600 font-normal leading-relaxed max-w-sm">

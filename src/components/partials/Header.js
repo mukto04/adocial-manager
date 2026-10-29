@@ -27,19 +27,14 @@ export default function Header({ onOpenBooking }) {
       }`}
     >
       <div className="max-w-[1360px] mx-auto px-6 lg:px-10 flex items-center justify-between">
-        {/* Adocial Wordmark */}
-        <Link href="/" className="group flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-cobalt-600 flex items-center justify-center text-white font-bold text-base shadow-sm group-hover:bg-cobalt-700 transition-colors">
-            A
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display font-extrabold text-xl text-charcoal tracking-tight leading-none">
-              Adocial<span className="text-cobalt-600">.</span>
-            </span>
-            <span className="text-[10px] font-medium tracking-wider text-slate-500 uppercase mt-0.5">
-              Performance Advertising
-            </span>
-          </div>
+        {/* Adocial Official Logo */}
+        <Link href="/" className="flex items-center group">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Adocial - Performance Advertising Agency"
+            className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+          />
         </Link>
 
         {/* Desktop Navigation Links */}
