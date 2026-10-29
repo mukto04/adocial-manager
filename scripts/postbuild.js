@@ -8,3 +8,4 @@ if (fs.existsSync(srcDir)) {
   fs.cpSync(srcDir, destDir, { recursive: true, force: true });
   console.log('✓ Successfully mirrored out/ into .next/ for Cloudflare Pages compatibility.');
 }
+
