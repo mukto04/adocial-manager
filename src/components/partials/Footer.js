@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../public/images/logo/logo.png";
+import { siteConfig } from "@/config/siteConfig";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -52,7 +53,7 @@ export default function Footer() {
 
             <div className="footer-connect-row">
               <a
-                href="https://wa.me/YOUR_PHONE_NUMBER"
+                href={siteConfig.contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-connect-pill"
@@ -63,7 +64,7 @@ export default function Footer() {
                 <span>WhatsApp</span>
               </a>
               <a
-                href="mailto:YOUR_EMAIL@example.com?subject=Adocial%20Strategy%20Inquiry"
+                href={`mailto:${siteConfig.contact.email}?subject=Adocial%20Strategy%20Inquiry`}
                 className="footer-connect-pill"
               >
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2">

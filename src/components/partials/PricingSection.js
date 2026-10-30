@@ -2,31 +2,30 @@
 
 import React from "react";
 
-export default function PricingSection() {
+export default function PricingSection({ onOpenBooking }) {
   return (
     <section className="section pricing-section" id="pricing">
       <div className="wrap">
-        {/* Section Header - Exactly matches "What we do" Services Header */}
-        <div className="section-head reveal">
-          <div className="section-badge">
-            <span className="section-badge-dot"></span>
-            <span>Transparent Pricing</span>
+        {/* Editorial Section Header */}
+        <div className="max-w-2xl mb-12 scroll-reveal">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200/60">
+              06 / Investment Structure
+            </span>
           </div>
-          <h2>
-            Predictable investment.
-            <br />
-            <span className="text-gradient">Engineered for real ROI.</span>
+          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
+            Predictable investment engineered for real ROI.
           </h2>
-          <p>
-            You add us as Manager to your Meta or Google Ads account. We prepare, launch, and optimize every campaign
-            directly from your account based on your goals and budget.
+          <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+            Invite our media buyer into your Meta or Google Ads account. We build, monitor, test, and optimize
+            campaigns directly from your account with zero agency markup on spend.
           </p>
         </div>
 
         {/* 2-Column Luxury Pricing Grid - Built on the same service-card DNA */}
         <div className="pricing-grid">
           {/* Card 1: Fixed Monthly Retainer ($300/mo) */}
-          <article className="pricing-card service-card depth-in">
+          <article className="pricing-card service-card depth-in scroll-reveal scroll-stagger-1">
             <span className="card-sheen" aria-hidden="true"></span>
             
             <div className="pricing-card-top">
@@ -86,16 +85,20 @@ export default function PricingSection() {
             </ul>
 
             <div className="pricing-card-action">
-              <a className="btn light pricing-btn" href="#contact">
+              <button 
+                type="button" 
+                onClick={onOpenBooking} 
+                className="btn light pricing-btn w-full cursor-pointer"
+              >
                 Hire dedicated manager ($300/mo) <span>↗</span>
-              </a>
+              </button>
             </div>
 
             <div className="card-watermark"></div>
           </article>
 
           {/* Card 2: Part-Time / Performance Partner (10% - 15%) */}
-          <article className="pricing-card service-card depth-in delay-1 popular-tier">
+          <article className="pricing-card service-card depth-in delay-1 popular-tier scroll-reveal scroll-stagger-2">
             <span className="card-sheen" aria-hidden="true"></span>
 
             <div className="pricing-card-top">
@@ -156,9 +159,13 @@ export default function PricingSection() {
             </ul>
 
             <div className="pricing-card-action">
-              <a className="btn primary pricing-btn" href="#contact">
+              <button 
+                type="button" 
+                onClick={onOpenBooking} 
+                className="btn primary pricing-btn w-full cursor-pointer"
+              >
                 Start performance partnership <span>↗</span>
-              </a>
+              </button>
             </div>
 
             <div className="card-watermark"></div>

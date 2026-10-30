@@ -326,11 +326,27 @@ button {
 
 .hero {
   position: relative;
-  padding: 82px 0 82px;
-  min-height: 680px;
+  padding: 96px 0 88px;
+  min-height: 700px;
   display: flex;
   align-items: center;
   overflow: hidden;
+  background: 
+    radial-gradient(ellipse 65% 55% at 75% 15%, rgba(59, 130, 246, 0.12), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 15% 85%, rgba(37, 99, 235, 0.07), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.hero:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero-grid {
@@ -583,14 +599,25 @@ p {
 }
 
 
+.hero-heading {
+  font-family: "Clash Display", "Cabinet Grotesk", "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  font-size: clamp(38px, 4.2vw, 56px);
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  margin: 18px 0 20px;
+  max-width: 660px;
+  color: #0b132b;
+}
+
 h1 {
   font-family: "Clash Display", "Cabinet Grotesk", "Plus Jakarta Sans", sans-serif;
-  font-weight: 600;
-  font-size: clamp(46px, 4.8vw, 70px);
-  line-height: 1.08;
+  font-weight: 700;
+  font-size: clamp(38px, 4.2vw, 56px);
+  line-height: 1.14;
   letter-spacing: -0.025em;
-  margin: 22px 0 20px;
-  max-width: 600px;
+  margin: 18px 0 20px;
+  max-width: 660px;
   color: #0b132b;
 }
 
@@ -3315,49 +3342,45 @@ h2 {
   color: #475569;
 }
 
-/* Animations & Transitions */
-.reveal {
-  opacity: 0;
-  transform: translateY(34px);
-  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+/* ─── Ultra-Smooth Luxury Scroll Reveal Engine ─── */
+.hero-copy-wrap {
+  animation: heroEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.reveal.in-view {
+.hero-video-wrapper {
+  animation: heroEnter 0.9s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-36px);
-  transition: opacity 0.85s, transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.reveal-left.in-view {
+.scroll-reveal.is-in-view {
   opacity: 1;
-  transform: translateX(0);
+  transform: none;
 }
 
-.reveal-right {
-  opacity: 0;
-  transform: translateX(36px);
-  transition: opacity 0.85s, transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
+.scroll-stagger-1 { transition-delay: 0.1s; }
+.scroll-stagger-2 { transition-delay: 0.2s; }
+.scroll-stagger-3 { transition-delay: 0.3s; }
+.scroll-stagger-4 { transition-delay: 0.4s; }
 
-.reveal-right.in-view {
+/* Keep legacy classes visible to avoid any white flash */
+.reveal, .reveal-left, .reveal-right, .depth-in {
   opacity: 1;
-  transform: translateX(0);
-}
-
-.depth-in {
-  opacity: 0;
-  transform: perspective(900px) rotateX(12deg) translateY(35px) scale(0.96);
-  transition: opacity 0.9s, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.depth-in.in-view {
-  opacity: 1;
-  transform: perspective(900px) rotateX(0) translateY(0) scale(1);
 }
 
 .delay-1 { transition-delay: 0.12s; }

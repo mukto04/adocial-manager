@@ -19,7 +19,7 @@ export const siteConfig = {
     whatsappLink: "https://wa.me/15551234567?text=Hi%20Adocial%2C%20I%20would%20like%20to%20discuss%20our%20ad%20campaigns.",
     // External scheduling link placeholder (e.g., Calendly / Cal.com)
     bookingUrl: "#booking",
-    officeTimezones: "US (EST/PST) • UK (GMT) • AU (AEST)",
+    officeTimezones: "Global Coverage • All Timezones Supported",
   },
 
   // Service Areas
@@ -51,8 +51,9 @@ export const siteConfig = {
   navLinks: [
     { name: "Services", href: "#services" },
     { name: "Our Approach", href: "#approach" },
-    { name: "Intelligence", href: "#intelligence" },
-    { name: "About", href: "#about" },
+    { name: "ROI Calculator", href: "#intelligence" },
+    { name: "Proof", href: "#proof" },
+    { name: "Pricing", href: "#pricing" },
     { name: "FAQ", href: "#faq" },
   ],
 };

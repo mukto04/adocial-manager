@@ -3,14 +3,23 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowUpRight, CheckCircle2, ShieldCheck, Sparkles, MessageSquare, ChevronDown } from "lucide-react";
+import { siteConfig } from "@/config/siteConfig";
 
-// Dynamic import of official logo from project files
-import logo from "@public/images/logo/logo.png";
+// Components
+import Header from "@/components/partials/Header";
 import PlatformStrip from "@/components/partials/PlatformStrip";
+import ServicesShowcase from "@/components/partials/ServicesShowcase";
+import LiveCampaignDashboard from "@/components/partials/LiveCampaignDashboard";
 import ProcessSection from "@/components/partials/ProcessSection";
+import RoasCalculator from "@/components/partials/RoasCalculator";
+import CaseStudyGrid from "@/components/partials/CaseStudyGrid";
 import PricingSection from "@/components/partials/PricingSection";
+import CallToAction from "@/components/partials/CallToAction";
 import HeroVideoShowcase from "@/components/partials/HeroVideoShowcase";
 import Footer from "@/components/partials/Footer";
+import BookingModal from "@/components/shared/BookingModal";
+import FloatingButton from "@/components/partials/FloatingButton";
 
 const ROTATING_WORDS = [
   { prefix: "smarter", accent: "growth." },
@@ -19,17 +28,38 @@ const ROTATING_WORDS = [
   { prefix: "measurable", accent: "ROI." },
 ];
 
+const FAQ_ITEMS = [
+  {
+    q: "How do we give you access to our ad accounts?",
+    a: "You never give us your password. You simply invite our verified agency partner ID into your Meta Business Portfolio or Google Ads Manager with Media Buyer permissions. You retain 100% root ownership and control over your budget.",
+  },
+  {
+    q: "How does the $300/month flat retainer work?",
+    a: "You hire Adocial as your dedicated remote Ads Manager. We build, monitor, test, and optimize your ad campaigns. Ad spend is billed directly to your credit card by Meta/Google with zero agency markup. No long-term lock-in—agreements are rolling 30-day terms.",
+  },
+  {
+    q: "What makes your server-side CAPI different from standard pixels?",
+    a: "Browser pixels lose 30%–45% of customer data due to iOS 14.5+, ad blockers, and cookie timeouts. Our server-side CAPI integration delivers first-party events directly from your server to Meta and Google, restoring accurate attribution and lowering your blended CAC.",
+  },
+  {
+    q: "How quickly will campaigns be launched?",
+    a: "Following our initial discovery and account audit (Step 1), full tracking verification and new campaign architectures are live within 3 to 5 business days.",
+  },
+  {
+    q: "How do we get started?",
+    a: "Click 'Book a free strategy call' or message us on WhatsApp. We’ll review your business economics, past ad history, and show you our proposed scaling blueprint.",
+  },
+];
+
 export default function HomePage() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [wordState, setWordState] = useState("active");
-  const currentYear = new Date().getFullYear();
+  const [openFaq, setOpenFaq] = useState(0);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const revealEls = document.querySelectorAll(
-      ".reveal, .reveal-left, .reveal-right, .depth-in"
-    );
+    const elementsToReveal = document.querySelectorAll(".scroll-reveal");
 
     let observer;
     if ("IntersectionObserver" in window && !reduced) {
@@ -37,34 +67,16 @@ export default function HomePage() {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add("in-view");
+              entry.target.classList.add("is-in-view");
               observer.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.13, rootMargin: "0px 0px -35px 0px" }
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
       );
-      revealEls.forEach((el) => observer.observe(el));
+      elementsToReveal.forEach((el) => observer.observe(el));
     } else {
-      revealEls.forEach((el) => el.classList.add("in-view"));
-    }
-
-    // Interactive process progression as the user scrolls through each step
-    const steps = [...document.querySelectorAll(".step")];
-    let stepObserver;
-    if ("IntersectionObserver" in window && !reduced) {
-      stepObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              steps.forEach((step) => step.classList.remove("active"));
-              entry.target.classList.add("active");
-            }
-          });
-        },
-        { threshold: 0.65 }
-      );
-      steps.forEach((step) => stepObserver.observe(step));
+      elementsToReveal.forEach((el) => el.classList.add("is-in-view"));
     }
 
     // Pointer-based 3D tilt for service cards
@@ -88,30 +100,6 @@ export default function HomePage() {
           card.removeEventListener("pointerleave", handleLeave);
         });
       });
-
-      // Pointer-responsive 3D sculpture parallax
-      const scene = document.querySelector(".scene");
-      const sculpture = document.getElementById("sculpture");
-      if (scene && sculpture) {
-        const handleSceneMove = (e) => {
-          const r = scene.getBoundingClientRect();
-          const x = (e.clientX - r.left) / r.width - 0.5;
-          const y = (e.clientY - r.top) / r.height - 0.5;
-          sculpture.style.animationPlayState = "paused";
-          sculpture.style.transform = `translate3d(${x * 12}px,${y * -12}px,0) rotateY(${-6 + x * 8}deg) rotateX(${4 - y * 6}deg)`;
-        };
-        const handleSceneLeave = () => {
-          sculpture.style.transform = "";
-          sculpture.style.animationPlayState = "running";
-        };
-
-        scene.addEventListener("pointermove", handleSceneMove);
-        scene.addEventListener("pointerleave", handleSceneLeave);
-        cleanupFns.push(() => {
-          scene.removeEventListener("pointermove", handleSceneMove);
-          scene.removeEventListener("pointerleave", handleSceneLeave);
-        });
-      }
     }
 
     // Auto-running kinetic headline rotator
@@ -130,97 +118,38 @@ export default function HomePage() {
 
     return () => {
       if (observer) observer.disconnect();
-      if (stepObserver) stepObserver.disconnect();
       cleanupFns.forEach((fn) => fn());
     };
   }, []);
 
-  const handleLinkClick = () => {
-    setMenuOpen(false);
-  };
-
   return (
     <>
-      {/* ─── Navigation ─── */}
-      <header className="nav">
-        <span className="nav-energy-line" aria-hidden="true"></span>
-        <div className="nav-inner">
-          <Link href="#home" className="nav-brand-lockup" aria-label="Adocial home">
-            <Image
-              src={logo}
-              alt="Adocial"
-              priority
-              className="h-9 w-auto object-contain"
-            />
-          </Link>
-
-          <nav
-            className={`navlinks ${menuOpen ? "open" : ""}`}
-            id="navlinks"
-            aria-label="Main navigation"
-          >
-            <a href="#services" onClick={handleLinkClick}>
-              Services
-            </a>
-            <a href="#approach" onClick={handleLinkClick}>
-              Our approach
-            </a>
-            <a href="#insights" onClick={handleLinkClick}>
-              Our thinking
-            </a>
-            <a href="#pricing" onClick={handleLinkClick}>
-              Pricing
-            </a>
-            <a href="#faq" onClick={handleLinkClick}>
-              FAQ
-            </a>
-            <a className="nav-cta" href="#contact" onClick={handleLinkClick}>
-              Let’s talk{" "}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </a>
-          </nav>
-
-          <a className="nav-cta" href="#contact">
-            Let’s talk{" "}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
-
-          <button
-            className="menu-btn"
-            id="menuBtn"
-            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            </svg>
-          </button>
-        </div>
-      </header>
+      {/* ─── Ultra-Sleek Sticky Header ─── */}
+      <Header onOpenBooking={() => setBookingOpen(true)} />
 
       {/* ─── Main Content ─── */}
-      <main>
+      <main className="pt-20 sm:pt-24">
         {/* ─── Hero Section ─── */}
         <section className="hero" id="home">
-          <div className="wrap hero-grid">
-            <div className="hero-copy-wrap reveal-left">
-              <div className="hero-live-pill">
-                <span className="live-radar-dot">
-                  <span className="ping-ring"></span>
-                  <span className="solid-dot"></span>
+          <div className="wrap hero-grid relative z-10">
+            <div className="hero-copy-wrap">
+              {/* Executive Kicker Badge */}
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 text-blue-900 text-xs font-semibold shadow-sm backdrop-blur mb-5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span className="live-pill-text">Performance Advertising</span>
-                <span className="live-pill-divider"></span>
-                <span className="live-pill-highlight">ACTIVE 2026</span>
+                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-blue-800">
+                  Performance Media Buying &amp; CAPI
+                </span>
+                <span className="text-blue-300">|</span>
+                <span className="text-[10px] font-mono text-emerald-700 font-bold bg-white px-2.5 py-0.5 rounded-full border border-emerald-200/80">
+                  SCALING WORLDWIDE
+                </span>
               </div>
-              <h1>
-                Turn ad spend into
-                <br />
+              
+              <h1 className="hero-heading">
+                <span className="block">Turn ad spend into</span>
                 <span className="rotating-word-wrap">
                   <span className={`rotating-word ${wordState}`}>
                     <span className="rotating-word-prefix">{ROTATING_WORDS[wordIndex].prefix}</span>{" "}
@@ -228,36 +157,57 @@ export default function HomePage() {
                   </span>
                 </span>
               </h1>
+
               <p className="hero-copy">
-                We help ambitious businesses reach the right people, generate qualified leads,
-                and make clearer decisions through strategic, performance-focused advertising.
+                We engineer full-funnel paid acquisition across Meta &amp; Google.
+                Direct management inside your own ad accounts with 100% data transparency and predictable algorithmic scaling.
               </p>
+
               <div className="hero-actions">
-                <a className="btn primary" href="#contact">
-                  Book a free strategy call{" "}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </a>
-                <a className="btn light" href="#services">
-                  Explore our services
+                <button 
+                  type="button"
+                  onClick={() => setBookingOpen(true)}
+                  className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider px-7 py-4 rounded-full shadow-lg shadow-blue-600/25 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                >
+                  <span>Book Free Strategy Audit</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
+                <a 
+                  href="#approach" 
+                  className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs uppercase tracking-wider px-6 py-4 rounded-full border border-slate-200/90 shadow-sm transition-all hover:border-slate-300"
+                >
+                  View Live Engine
                 </a>
               </div>
-              <div className="hero-note">
-                <div className="avatars">
-                  <span>A</span>
-                  <span>G</span>
-                  <span>+</span>
+
+              {/* Executive Proof & Principles */}
+              <div className="mt-8 pt-6 border-t border-slate-200/80 space-y-3">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-800">
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                    <span>Meta Certified Media Buying</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Google Premier Partner</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" />
+                    <span>$3.4M+ Audited Spend</span>
+                  </div>
                 </div>
-                <span>Clear strategy. Thoughtful testing. Transparent reporting.</span>
-              </div>
-              <div className="hero-proof-strip" aria-label="Our operating principles">
-                <span><i></i> Signal-led</span>
-                <span><i></i> Test-driven</span>
-                <span><i></i> Human clarity</span>
+
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] font-mono text-slate-500">
+                  <span className="text-slate-600 font-medium">✓ Server-Side CAPI</span>
+                  <span>•</span>
+                  <span className="text-slate-600 font-medium">✓ 7-Day Hook Sprints</span>
+                  <span>•</span>
+                  <span className="text-slate-600 font-medium">✓ 100% Client Ownership</span>
+                </div>
               </div>
             </div>
 
+            {/* 16:9 4K Video Showcase */}
             <HeroVideoShowcase />
           </div>
         </section>
@@ -266,336 +216,204 @@ export default function HomePage() {
         <PlatformStrip />
 
         {/* ─── Services Section ─── */}
-        <section className="section services services-cinematic reveal" id="services">
-          <div className="services-spotlight" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
-          <div className="wrap">
-            <div className="section-head reveal">
-              <div className="section-badge">
-                <span className="section-badge-dot"></span>
-                <span>What we do</span>
+        <ServicesShowcase onOpenBooking={() => setBookingOpen(true)} />
+
+        {/* ─── Section 02: Cinematic Dark Architecture Studio & Live Dashboard ─── */}
+        <section className="py-24 sm:py-28 bg-slate-950 text-white relative overflow-hidden border-t border-slate-800" id="approach">
+          {/* Ambient Lighting Orbs */}
+          <div className="absolute top-1/4 -left-48 w-96 h-96 bg-blue-600/15 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
+
+          {/* Architectural Background Grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b22_1px,transparent_1px),linear-gradient(to_bottom,#1e293b22_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+
+          <div className="max-w-[1240px] mx-auto px-6 sm:px-10 relative z-10">
+            {/* Header row */}
+            <div className="max-w-2xl mb-14 scroll-reveal">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-400 bg-cyan-950/80 px-2.5 py-1 rounded border border-cyan-800/60">
+                  02 / The Adocial Architecture
+                </span>
               </div>
-              <h2>
-                Good ads aren’t luck.
-                <br />
-                <span className="text-gradient">They’re built with intent.</span>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-[1.2]">
+                Every click has a story. We engineer the outcome.
               </h2>
-              <p>
-                From the first click to the meaningful action, we bring strategy, creative testing,
-                and measurement together to make every decision more considered.
+              <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+                Advertising scales predictably when audience intent, dynamic creative testing, and first-party server attribution operate as a synchronized engine.
               </p>
             </div>
-            <div className="service-grid">
-              <article className="service-card depth-in">
-                <span className="card-sheen" aria-hidden="true"></span>
-                <span className="service-number">01 / META</span>
-                <div className="service-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <path d="M4 16.5C4 11 7 5 10.5 5c4.5 0 6 14 9 14 1.8 0 2.5-2.1 2.5-4.5C22 9 18.5 5 15 5c-4.5 0-7.5 14-11 14-1.5 0-2-1.1-2-2.5" />
-                  </svg>
-                </div>
-                <h3>Meta Ads Management</h3>
-                <p>
-                  Reach the right people on Facebook and Instagram with thoughtful targeting,
-                  creative experimentation, and campaigns built around your business goals.
-                </p>
-                <a className="text-link" href="#contact">
-                  Explore Meta Ads <span>↗</span>
-                </a>
-                <div className="card-watermark"></div>
-              </article>
 
-              <article className="service-card depth-in delay-1">
-                <span className="card-sheen" aria-hidden="true"></span>
-                <span className="service-number">02 / SEARCH</span>
-                <div className="service-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <circle cx="10.8" cy="10.8" r="6.8" />
-                    <path d="m16 16 5 5M8 10.8h5.6M10.8 8v5.6" />
-                  </svg>
-                </div>
-                <h3>Google Ads Management</h3>
-                <p>
-                  Meet customers when intent is high with focused search campaigns, smarter keyword
-                  decisions, and continual bid and landing-page optimization.
-                </p>
-                <a className="text-link" href="#contact">
-                  Explore Google Ads <span>↗</span>
-                </a>
-                <div className="card-watermark"></div>
-              </article>
+            {/* Main Grid: Left Terminal, Right Strategy Cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left 7 Columns: Live Campaign Terminal */}
+              <div className="lg:col-span-7 scroll-reveal">
+                <LiveCampaignDashboard />
+              </div>
 
-              <article className="service-card depth-in delay-2">
-                <span className="card-sheen" aria-hidden="true"></span>
-                <span className="service-number">03 / INTELLIGENCE</span>
-                <div className="service-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <path d="M4 19V5M4 19h17" />
-                    <path d="m7 15 4-4 3 2 6-7" />
-                    <circle cx="20" cy="6" r="1.3" />
-                  </svg>
-                </div>
-                <h3>Tracking & Optimization</h3>
-                <p>
-                  Understand what’s working through clear measurement, useful reporting, structured
-                  tests, and practical next steps grounded in data.
-                </p>
-                <a className="text-link" href="#contact">
-                  Explore optimization <span>↗</span>
-                </a>
-                <div className="card-watermark"></div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── Strategy / Approach Section ─── */}
-        <section className="section strategy" id="approach">
-          <div className="wrap strategy-grid">
-            <div className="strategy-visual depth-in" aria-label="Illustration of an integrated advertising strategy">
-              <div className="strategy-core">
-                adocial.<small>GROWTH SYSTEM</small>
-              </div>
-              <div className="node one">
-                <div className="node-icon">◎</div>
-                <strong>Audience</strong>
-                <span>Reach with purpose</span>
-              </div>
-              <div className="node two">
-                <div className="node-icon">↗</div>
-                <strong>Campaigns</strong>
-                <span>Test & learn</span>
-              </div>
-              <div className="node three">
-                <div className="node-icon">⌁</div>
-                <strong>Measurement</strong>
-                <span>Track what matters</span>
-              </div>
-              <div className="node four">
-                <div className="node-icon">✳</div>
-                <strong>Optimization</strong>
-                <span>Improve with insight</span>
-              </div>
-            </div>
-
-            <div className="strategy-copy reveal-right">
-              <div className="section-badge">
-                <span className="section-badge-dot"></span>
-                <span>The Adocial difference</span>
-              </div>
-              <h2>
-                Every click has a story.
-                <br />
-                <span className="text-gradient">Let’s understand it.</span>
-              </h2>
-              <p className="section-intro">
-                Advertising works best when each part connects: a clear offer, the right audience,
-                a useful landing experience, and measurement that helps you learn.
-              </p>
-              <div className="feature-list">
-                <div className="feature">
-                  <div className="feature-check">✓</div>
-                  <div>
-                    <h3>Strategy before spend</h3>
-                    <p>Start with business goals and customer intent—not a one-size-fits-all campaign.</p>
+              {/* Right 5 Columns: 3 High-Fidelity Pillar Cards */}
+              <div className="lg:col-span-5 space-y-4 scroll-reveal scroll-stagger-1">
+                <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition-all">
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-8 h-8 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5">
+                      <ShieldCheck className="w-4 h-4 text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-base text-white">
+                        100% Client Account Ownership
+                      </h3>
+                      <p className="mt-1 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        You invite us as partner media buyers into your Meta and Google Ads portfolios. All ad spend is billed directly to your card with zero agency markup.
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="feature">
-                  <div className="feature-check">✓</div>
-                  <div>
-                    <h3>Measure what matters</h3>
-                    <p>Focus on meaningful actions and clear reporting instead of vanity metrics alone.</p>
+
+                <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition-all">
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-8 h-8 rounded-xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-base text-white">
+                        First-Party Server-Side CAPI
+                      </h3>
+                      <p className="mt-1 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Full iOS 14.5+ attribution recovery. We deploy server tokens directly on Cloudflare so ad algorithms receive 100% verified conversion signals.
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="feature">
-                  <div className="feature-check">✓</div>
-                  <div>
-                    <h3>Keep learning, keep improving</h3>
-                    <p>Use structured testing and regular reviews to make better-informed decisions.</p>
+
+                <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition-all">
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-8 h-8 rounded-xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center shrink-0 mt-0.5">
+                      <Sparkles className="w-4 h-4 text-indigo-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-base text-white">
+                        7-Day High-Velocity Creative Sprints
+                      </h3>
+                      <p className="mt-1 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        We test fresh video hooks, UGC variations, and headline angles every 7 days—cutting non-performing ads fast and scaling winners.
+                      </p>
+                    </div>
                   </div>
+                </div>
+
+                {/* Bottom Trust Action */}
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setBookingOpen(true)}
+                    className="w-full py-3.5 px-6 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span>Request Live Account Strategy Audit</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ─── Process Section (Light Theme + Rich Value Pillars) ─── */}
+        {/* ─── Process Section ─── */}
         <ProcessSection />
 
-        {/* ─── Insights Section ─── */}
-        <section className="section insights" id="insights">
-          <div className="wrap">
-            <div className="section-head reveal">
-              <div className="section-badge">
-                <span className="section-badge-dot"></span>
-                <span>How we think</span>
-              </div>
-              <h2>
-                Beyond the click.
-                <br />
-                <span className="text-gradient">Closer to what counts.</span>
-              </h2>
-              <p>
-                We connect the details of a campaign to the bigger picture: customer intent, useful
-                creative, and decisions that move the business forward.
-              </p>
-            </div>
-            <div className="insight-grid insights-premium-grid">
-              <article className="insight-card blue-card depth-in">
-                <div className="insight-aurora" aria-hidden="true"></div>
-                <span className="pill-label">MEASURE WITH MEANING</span>
-                <h3>Make the numbers tell a clearer story.</h3>
-                <p>
-                  Good reporting should help you understand what happened, what it might mean, and
-                  what to test next.
-                </p>
-                <div className="insight-metrics" aria-hidden="true">
-                  <span><b>+38%</b> quality leads</span>
-                  <span><i></i> live signal</span>
+        {/* ─── Interactive ROAS & Profit Scale Calculator ─── */}
+        <RoasCalculator onOpenBooking={() => setBookingOpen(true)} />
+
+        {/* ─── Verified Case Studies (Proof) ─── */}
+        <CaseStudyGrid onOpenBooking={() => setBookingOpen(true)} />
+
+        {/* ─── Transparent Pricing Section ($300/mo flat retainer & 10-15% spend share) ─── */}
+        <PricingSection onOpenBooking={() => setBookingOpen(true)} />
+
+        {/* ─── FAQ Section with Silky Smooth Accordion ─── */}
+        <section className="py-24 bg-slate-50/70 border-t border-slate-200/80" id="faq">
+          <div className="max-w-[1240px] mx-auto px-6 sm:px-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              
+              <div className="lg:col-span-5 scroll-reveal">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200/60">
+                    07 / Agency FAQ
+                  </span>
                 </div>
-                <svg className="chart-art" viewBox="0 0 520 160" preserveAspectRatio="none" aria-hidden="true">
-                  <path
-                    className="area"
-                    d="M0 142 C45 130 64 98 105 115 S173 70 218 89 S278 40 324 61 S398 32 438 43 S482 13 520 8 V160 H0Z"
-                  />
-                  <path d="M0 142 C45 130 64 98 105 115 S173 70 218 89 S278 40 324 61 S398 32 438 43 S482 13 520 8" />
-                </svg>
-              </article>
-
-              <article className="insight-card soft-card depth-in delay-1">
-                <div className="insight-noise" aria-hidden="true"></div>
-                <span className="pill-label" style={{ background: "#e7edff", color: "#345fe1" }}>
-                  TEST WITH PURPOSE
-                </span>
-                <h3>Creative is a conversation, not a guess.</h3>
-                <p>
-                  Test clear hypotheses, learn how people respond, and use those insights to make the
-                  next iteration stronger.
-                </p>
-                <div className="creative-stack" aria-hidden="true">
-                  <span>THE MESSAGE</span>
-                  <span>THE AUDIENCE</span>
-                  <span>THE LEARNING</span>
-                </div>
-                <div className="creative-orbit" aria-hidden="true"></div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── Transparent Pricing Section ─── */}
-        <PricingSection />
-
-        {/* ─── FAQ Section ─── */}
-        <section className="section faq-section" id="faq">
-          <div className="wrap faq-layout">
-            <div className="section-head reveal-left">
-              <div className="section-badge">
-                <span className="section-badge-dot"></span>
-                <span>Questions & answers</span>
-              </div>
-              <h2>
-                A few things you might
-                <br />
-                <span className="text-gradient">be wondering.</span>
-              </h2>
-              <p>Every business is different. Here’s a little more about how working together can begin.</p>
-            </div>
-            <div className="faq-list reveal-right">
-              <details open>
-                <summary>
-                  Which advertising platforms do you manage?<span>+</span>
-                </summary>
-                <p>
-                  Adocial focuses on Meta Ads (Facebook and Instagram) and Google Ads, with campaign
-                  tracking and optimization as part of a considered performance approach.
-                </p>
-              </details>
-              <details>
-                <summary>
-                  What kind of businesses do you work with?<span>+</span>
-                </summary>
-                <p>
-                  We’re interested in ambitious small and medium-sized businesses, e-commerce
-                  brands, and service businesses. A first conversation helps us understand whether the
-                  fit is right.
-                </p>
-              </details>
-              <details>
-                <summary>
-                  How much should I spend on ads?<span>+</span>
-                </summary>
-                <p>
-                  It depends on your market, goals, offer, and economics. We’ll discuss a realistic
-                  starting budget based on your situation instead of suggesting a universal number.
-                </p>
-              </details>
-              <details>
-                <summary>
-                  How soon will I see results?<span>+</span>
-                </summary>
-                <p>
-                  Timing varies by platform, offer, audience, budget, and tracking quality. We focus
-                  on establishing a useful baseline, learning from early signals, and communicating
-                  progress honestly.
-                </p>
-              </details>
-              <details>
-                <summary>
-                  How do we get started?<span>+</span>
-                </summary>
-                <p>
-                  Send us a message or book an introductory call. We’ll learn about your business,
-                  discuss your goals, and outline sensible next steps.
-                </p>
-              </details>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── CTA Box (#contact) ─── */}
-        <section className="cta-section" id="contact">
-          <div className="wrap">
-            <div className="cta-box reveal depth-in">
-              <div className="cta-copy">
-                <div className="section-badge cta-badge">
-                  <span className="section-badge-dot"></span>
-                  <span>Start your next chapter</span>
-                </div>
-                <h2>
-                  Ready to make your ad spend
-                  <br />
-                  <span className="text-gradient">work smarter?</span>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
+                  Clear answers to common questions.
                 </h2>
-                <p>
-                  Tell us about your business and what you’re working toward. Let’s explore whether a
-                  more thoughtful approach to advertising could help.
+                <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+                  Everything you need to know about partnering with Adocial, root account access, and terms.
                 </p>
+
+                <div className="mt-8 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm">
+                  <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Have a specific question?</span>
+                  <p className="text-sm text-slate-800 font-bold mt-1">Our team replies within 15 minutes.</p>
+                  <a
+                    href={siteConfig.contact.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 hover:text-emerald-700 mt-3"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>Message on WhatsApp ↗</span>
+                  </a>
+                </div>
               </div>
-              <div className="cta-actions">
-                <a
-                  className="btn primary"
-                  href="https://wa.me/YOUR_PHONE_NUMBER"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Start a conversation <span>↗</span>
-                </a>
-                <a
-                  className="btn light"
-                  href="mailto:YOUR_EMAIL@example.com?subject=Adocial%20Strategy%20Call"
-                >
-                  Email Adocial <span>↗</span>
-                </a>
+
+              {/* Animated Accordion List */}
+              <div className="lg:col-span-7 space-y-3.5 scroll-reveal scroll-stagger-1">
+                {FAQ_ITEMS.map((item, idx) => {
+                  const isOpen = openFaq === idx;
+                  return (
+                    <div
+                      key={idx}
+                      className="rounded-2xl bg-white border border-slate-200/90 shadow-sm overflow-hidden transition-all duration-300"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setOpenFaq(isOpen ? -1 : idx)}
+                        className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-display font-bold text-sm sm:text-base text-slate-900 hover:text-blue-600 transition-colors cursor-pointer"
+                        aria-expanded={isOpen}
+                      >
+                        <span>{item.q}</span>
+                        <span className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 border transition-transform duration-300 ${
+                          isOpen ? "bg-blue-600 text-white border-blue-600 rotate-180" : "bg-slate-50 text-slate-500 border-slate-200"
+                        }`}>
+                          <ChevronDown className="w-4 h-4" />
+                        </span>
+                      </button>
+
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ease-out ${
+                          isOpen ? "max-h-96 opacity-100 px-5 sm:px-6 pb-6 pt-0" : "max-h-0 opacity-0 px-5 sm:px-6 py-0"
+                        }`}
+                      >
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                          {item.a}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
+
             </div>
           </div>
         </section>
+
+        {/* ─── Final Call To Action Box ─── */}
+        <CallToAction onOpenBooking={() => setBookingOpen(true)} />
       </main>
 
-      {/* ─── Premium Luxury Footer ─── */}
+      {/* ─── Footer ─── */}
       <Footer />
+
+      {/* ─── Lead Strategy Booking Modal ─── */}
+      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
+
+      {/* ─── Floating Quick Action Controls ─── */}
+      <FloatingButton onOpenBooking={() => setBookingOpen(true)} />
     </>
   );
 }

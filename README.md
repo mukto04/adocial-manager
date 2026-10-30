@@ -1,6 +1,6 @@
 # Adocial — Performance Advertising Agency
 
-Strategic, performance-focused advertising engineered to scale ambitious businesses across the USA, UK, Canada, Australia, and international markets.
+Strategic, performance-focused advertising engineered to scale ambitious businesses worldwide.
 
 ## Built With
 - **Framework:** [Next.js](https://nextjs.org/) (App Router)

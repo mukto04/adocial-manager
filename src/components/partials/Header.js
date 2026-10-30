@@ -36,7 +36,6 @@ export default function Header({ onOpenBooking }) {
           <Image
             src={logo}
             alt="Adocial - Performance Advertising Agency"
-            quality={100}
             priority
             className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-[1.02]"
           />

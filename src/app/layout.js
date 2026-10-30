@@ -12,15 +12,15 @@ export const metadata = {
     default: "Adocial — Turn Ad Spend Into Smarter Growth",
   },
   description:
-    "Adocial helps ambitious businesses in the USA, UK, Canada, Australia, and international markets generate qualified leads and scale revenue through strategic Meta & Google advertising.",
+    "Adocial helps ambitious businesses worldwide generate qualified leads and scale revenue through strategic, performance-focused Meta & Google advertising.",
   keywords: [
     "Adocial",
     "Adocial.com",
     "Performance Advertising Agency",
     "Meta Ads Management",
     "Google Ads Management",
-    "Paid Advertising Agency USA",
-    "Facebook Ads UK Canada Australia",
+    "Global Paid Advertising Agency",
+    "Worldwide Facebook Ads",
     "Conversion Rate Optimization",
     "Server-Side CAPI",
   ],
@@ -32,7 +32,7 @@ export const metadata = {
   openGraph: {
     title: "Adocial — Turn Ad Spend Into Smarter Growth",
     description:
-      "Strategic, performance-focused advertising for ambitious businesses across the USA, UK, Canada, and Australia.",
+      "Strategic, performance-focused advertising engineered to scale ambitious businesses worldwide.",
     url: "https://adocial.com",
     siteName: "Adocial",
     locale: "en_US",
