@@ -61,17 +61,7 @@ export default function Footer() {
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
                   <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.07c-.24.67-1.39 1.28-1.92 1.34-.51.06-1.17.09-3.76-.98-3.15-1.3-5.18-4.52-5.34-4.73-.16-.21-1.28-1.7-1.28-3.24 0-1.54.81-2.29 1.1-2.6.29-.31.64-.39.85-.39.21 0 .43 0 .61.01.2.01.46-.07.72.55.26.62.9 2.19.98 2.35.08.16.13.35.03.56-.1.21-.15.34-.3.51-.15.17-.32.38-.45.51-.15.15-.31.31-.13.62.18.31.8 1.32 1.72 2.14 1.18 1.05 2.18 1.37 2.49 1.52.31.15.49.13.67-.08.18-.21.77-.9 1-.1.21.23.41.28.69.15.28-.13 1.77-.83 2.07-.98.3-.15.51-.23.59-.36.08-.13.08-.77-.16-1.44z" />
                 </svg>
-                <span>WhatsApp</span>
-              </a>
-              <a
-                href={`mailto:${siteConfig.contact.email}?subject=Adocial%20Strategy%20Inquiry`}
-                className="footer-connect-pill"
-              >
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-                <span>Email Team</span>
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
           </div>
@@ -99,29 +89,29 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Engagement */}
+          {/* Column 4: Engagement - 100% WhatsApp */}
           <div className="footer-col">
-            <h4 className="footer-col-title">Get In Touch</h4>
+            <h4 className="footer-col-title">Direct Contact</h4>
             <ul className="footer-nav-list">
               <li>
-                <a href="#contact" className="footer-highlight-link">
-                  Book Strategy Call <span>↗</span>
+                <a
+                  href={siteConfig.contact.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-highlight-link font-mono"
+                >
+                  WhatsApp: {siteConfig.contact.whatsappNumber} <span>↗</span>
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" rel="noopener noreferrer">
-                  Quick WhatsApp Chat
-                </a>
-              </li>
-              <li>
-                <a href="mailto:YOUR_EMAIL@example.com">
-                  Direct Partnership Mail
-                </a>
+                <span className="text-xs text-slate-500 block pt-1">
+                  Direct line with senior media buyers. Zero gatekeepers.
+                </span>
               </li>
             </ul>
-            <div className="footer-response-tag">
+            <div className="footer-response-tag mt-3">
               <span className="response-dot"></span>
-              <span>Avg. response under 2 hours</span>
+              <span>Online • Replies within 15 mins</span>
             </div>
           </div>
         </div>

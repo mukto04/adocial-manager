@@ -1,17 +1,19 @@
 "use client";
 
 import React from "react";
+import { siteConfig } from "@/config/siteConfig";
 
-export default function PricingSection({ onOpenBooking }) {
+export default function PricingSection() {
   return (
     <section className="section pricing-section" id="pricing">
       <div className="wrap">
         {/* Editorial Section Header */}
         <div className="max-w-2xl mb-12 scroll-reveal">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200/60">
-              06 / Investment Structure
-            </span>
+          <div className="inline-flex items-center gap-2.5 text-xs font-mono tracking-[0.2em] uppercase font-bold text-blue-600 mb-4">
+            <span className="w-6 h-[1px] bg-blue-500/50"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+            <span>TRANSPARENT PRICING • ZERO SPEND MARKUP</span>
+            <span className="w-6 h-[1px] bg-blue-500/50"></span>
           </div>
           <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
             Predictable investment engineered for real ROI.
@@ -29,7 +31,7 @@ export default function PricingSection({ onOpenBooking }) {
             <span className="card-sheen" aria-hidden="true"></span>
             
             <div className="pricing-card-top">
-              <span className="service-number">01 / FIXED MONTHLY</span>
+              <span className="service-number">FLAT MONTHLY</span>
               <span className="pricing-mini-badge">Fixed Rate</span>
             </div>
 
@@ -85,13 +87,14 @@ export default function PricingSection({ onOpenBooking }) {
             </ul>
 
             <div className="pricing-card-action">
-              <button 
-                type="button" 
-                onClick={onOpenBooking} 
-                className="btn light pricing-btn w-full cursor-pointer"
+              <a 
+                href={siteConfig.contact.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn light pricing-btn w-full cursor-pointer flex items-center justify-center gap-2"
               >
-                Hire dedicated manager ($300/mo) <span>↗</span>
-              </button>
+                <span>Hire dedicated manager ($300/mo)</span> <span>↗</span>
+              </a>
             </div>
 
             <div className="card-watermark"></div>
@@ -102,7 +105,7 @@ export default function PricingSection({ onOpenBooking }) {
             <span className="card-sheen" aria-hidden="true"></span>
 
             <div className="pricing-card-top">
-              <span className="service-number">02 / SPEND SHARE</span>
+              <span className="service-number">PERFORMANCE SHARE</span>
               <span className="pricing-mini-badge highlight">★ Recommended</span>
             </div>
 
@@ -154,18 +157,19 @@ export default function PricingSection({ onOpenBooking }) {
               </li>
               <li>
                 <span className="pricing-check highlight">✓</span>
-                <span><strong>Priority Direct Access:</strong> Fast communication via WhatsApp or email</span>
+                <span><strong>Priority Direct Access:</strong> Fast direct communication via WhatsApp</span>
               </li>
             </ul>
 
             <div className="pricing-card-action">
-              <button 
-                type="button" 
-                onClick={onOpenBooking} 
-                className="btn primary pricing-btn w-full cursor-pointer"
+              <a 
+                href={siteConfig.contact.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn primary pricing-btn w-full cursor-pointer flex items-center justify-center gap-2"
               >
-                Start performance partnership <span>↗</span>
-              </button>
+                <span>Start performance partnership</span> <span>↗</span>
+              </a>
             </div>
 
             <div className="card-watermark"></div>

@@ -131,9 +131,13 @@ export default function PlatformStrip() {
   return (
     <section className="py-14 bg-white border-y border-slate-200/80 overflow-hidden relative">
       <div className="max-w-[1240px] mx-auto px-6 sm:px-10 mb-8 text-center scroll-reveal">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold mb-3">
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-          <span className="font-mono text-[11px] uppercase tracking-wider">Synchronized Advertising Infrastructure</span>
+        <div className="inline-flex items-center justify-center gap-3 text-xs font-mono tracking-[0.2em] uppercase font-bold text-slate-500 mb-3">
+          <span className="w-6 h-[1px] bg-slate-300"></span>
+          <span className="flex items-center gap-1.5 text-blue-600">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+            SYNCHRONIZED AD ECOSYSTEM
+          </span>
+          <span className="w-6 h-[1px] bg-slate-300"></span>
         </div>
         <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900">
           Full-Funnel Native Integration Across High-Converting Ad Networks

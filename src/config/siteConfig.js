@@ -14,9 +14,8 @@ export const siteConfig = {
   // Configurable Contact Channels
   contact: {
     email: "hello@adocial.com",
-    // Replace with your real WhatsApp number (including country code, e.g. 15551234567)
-    whatsappNumber: "15551234567",
-    whatsappLink: "https://wa.me/15551234567?text=Hi%20Adocial%2C%20I%20would%20like%20to%20discuss%20our%20ad%20campaigns.",
+    whatsappNumber: "+44 7882 760266",
+    whatsappLink: "https://wa.me/447882760266?text=Hi%20Adocial%2C%20I%20would%20like%20to%20discuss%20our%20ad%20campaigns.",
     // External scheduling link placeholder (e.g., Calendly / Cal.com)
     bookingUrl: "#booking",
     officeTimezones: "Global Coverage • All Timezones Supported",

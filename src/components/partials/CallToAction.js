@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, MessageSquare, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 
-export default function CallToAction({ onOpenBooking }) {
+export default function CallToAction() {
   return (
     <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-6 lg:px-10">
@@ -20,9 +20,11 @@ export default function CallToAction({ onOpenBooking }) {
           <div className="relative z-10 max-w-3xl">
             
             {/* Tag */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/15 text-xs font-semibold text-cobalt-200 tracking-wider uppercase mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Direct Strategic Partnership
+            <div className="inline-flex items-center gap-2.5 text-xs font-mono tracking-[0.2em] uppercase font-bold text-cyan-300 mb-6">
+              <span className="w-6 h-[1px] bg-cyan-400/50"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>DIRECT STRATEGIC PARTNERSHIP</span>
+              <span className="w-6 h-[1px] bg-cyan-400/50"></span>
             </div>
 
             {/* Headline */}
@@ -35,26 +37,17 @@ export default function CallToAction({ onOpenBooking }) {
               Tell us about your business and goals. Let&apos;s explore how a more strategic approach to advertising could help you reach qualified buyers and scale predictably.
             </p>
 
-            {/* Action Buttons */}
+            {/* Action Buttons - 100% WhatsApp */}
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              {/* Primary CTA */}
-              <button
-                onClick={onOpenBooking}
-                className="group inline-flex items-center gap-3 bg-cobalt-600 hover:bg-cobalt-500 text-white px-8 py-4 rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-lg hover:shadow-cobalt-600/30 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <span>Start a Conversation</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </button>
-
-              {/* Secondary WhatsApp CTA */}
               <a
                 href={siteConfig.contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-7 py-4 rounded-full text-xs font-bold tracking-wider uppercase border border-white/15 transition-all"
+                className="group inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-xl hover:shadow-emerald-600/30 hover:scale-[1.02] active:scale-[0.98]"
               >
-                <MessageSquare className="w-4 h-4 text-emerald-400" />
-                <span>Message Us on WhatsApp</span>
+                <MessageSquare className="w-4 h-4 fill-current" />
+                <span>Chat on WhatsApp Directly</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
 

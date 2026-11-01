@@ -104,10 +104,11 @@ export default function ProcessSection() {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 pb-8 border-b border-slate-200/80 scroll-reveal">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200/60">
-                03 / Operating Protocol
-              </span>
+            <div className="inline-flex items-center gap-2.5 text-xs font-mono tracking-[0.2em] uppercase font-bold text-blue-600 mb-4">
+              <span className="w-6 h-[1px] bg-blue-500/50"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+              <span>OPERATING PROTOCOL &amp; 4-PHASE ROADMAP</span>
+              <span className="w-6 h-[1px] bg-blue-500/50"></span>
             </div>
             <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
               Rigorous execution. Every step engineered for predictability.
@@ -249,22 +250,22 @@ export default function ProcessSection() {
         {/* 4 Foundation Pillars Strip */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-            <div className="font-mono text-xs font-bold text-blue-600 mb-1">01 / ROOT CONTROL</div>
+            <div className="font-mono text-[10px] font-bold text-blue-600 mb-1 tracking-wider uppercase">ROOT CONTROL</div>
             <div className="font-display font-bold text-slate-900 text-sm">100% Account Ownership</div>
             <p className="text-xs text-slate-500 mt-1">You retain complete admin rights. We manage as partner agency.</p>
           </div>
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-            <div className="font-mono text-xs font-bold text-emerald-600 mb-1">02 / TRANSPARENCY</div>
+            <div className="font-mono text-[10px] font-bold text-emerald-600 mb-1 tracking-wider uppercase">TRANSPARENCY</div>
             <div className="font-display font-bold text-slate-900 text-sm">Weekly Loom Video Briefs</div>
             <p className="text-xs text-slate-500 mt-1">Direct screen walkthrough of exact ad spends, tests, and wins.</p>
           </div>
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-            <div className="font-mono text-xs font-bold text-indigo-600 mb-1">03 / TESTING CADENCE</div>
+            <div className="font-mono text-[10px] font-bold text-indigo-600 mb-1 tracking-wider uppercase">TESTING CADENCE</div>
             <div className="font-display font-bold text-slate-900 text-sm">7-Day Creative Sprints</div>
             <p className="text-xs text-slate-500 mt-1">Fresh hooks, angles, and ad copy continuously deployed.</p>
           </div>
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-            <div className="font-mono text-xs font-bold text-purple-600 mb-1">04 / FREEDOM</div>
+            <div className="font-mono text-[10px] font-bold text-purple-600 mb-1 tracking-wider uppercase">FLEXIBILITY</div>
             <div className="font-display font-bold text-slate-900 text-sm">Rolling 30-Day Terms</div>
             <p className="text-xs text-slate-500 mt-1">No 12-month lock-in contracts. We earn your business monthly.</p>
           </div>

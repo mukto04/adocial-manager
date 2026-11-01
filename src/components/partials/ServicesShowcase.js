@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import { ArrowUpRight, CheckCircle2, ShieldCheck, Zap, Target, Cpu } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, MessageSquare } from "lucide-react";
+import { siteConfig } from "@/config/siteConfig";
 
-export default function ServicesShowcase({ onOpenBooking }) {
+export default function ServicesShowcase() {
   return (
     <section className="py-24 bg-slate-50/70 border-t border-slate-200/80 relative overflow-hidden" id="services">
       {/* Background ambient lighting */}
@@ -13,10 +14,11 @@ export default function ServicesShowcase({ onOpenBooking }) {
         
         {/* Editorial Section Header */}
         <div className="max-w-2xl mb-14 scroll-reveal">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200/60">
-              01 / Core Capabilities
-            </span>
+          <div className="inline-flex items-center gap-2.5 text-xs font-mono tracking-[0.2em] uppercase font-bold text-blue-600 mb-4">
+            <span className="w-6 h-[1px] bg-blue-500/50"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+            <span>CORE CAPABILITIES &amp; CHANNELS</span>
+            <span className="w-6 h-[1px] bg-blue-500/50"></span>
           </div>
           <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
             Strategic performance advertising built with intent.
@@ -37,8 +39,9 @@ export default function ServicesShowcase({ onOpenBooking }) {
             <div>
               {/* Header Badge */}
               <div className="flex items-center justify-between mb-5">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200/60">
-                  01 / META ADS ECOSYSTEM
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50/90 px-2.5 py-1 rounded-lg border border-blue-200/70 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                  META ADS ECOSYSTEM
                 </span>
                 <span className="text-[11px] font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-full">
                   Advantage+
@@ -89,14 +92,16 @@ export default function ServicesShowcase({ onOpenBooking }) {
 
             {/* Bottom CTA Button */}
             <div className="mt-8 pt-5 border-t border-slate-100">
-              <button
-                type="button"
-                onClick={onOpenBooking}
+              <a
+                href={siteConfig.contact.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-slate-800 bg-slate-100 group-hover:bg-blue-600 group-hover:text-white transition-all cursor-pointer"
               >
+                <MessageSquare className="w-3.5 h-3.5" />
                 <span>Explore Meta Strategy</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
 
@@ -108,8 +113,9 @@ export default function ServicesShowcase({ onOpenBooking }) {
             <div>
               {/* Header Badge */}
               <div className="flex items-center justify-between mb-5">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200/60">
-                  02 / GOOGLE SEARCH &amp; PMAX
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50/90 px-2.5 py-1 rounded-lg border border-emerald-200/70 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  GOOGLE SEARCH &amp; PMAX
                 </span>
                 <span className="text-[11px] font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-full">
                   High-Intent
@@ -160,14 +166,16 @@ export default function ServicesShowcase({ onOpenBooking }) {
 
             {/* Bottom CTA Button */}
             <div className="mt-8 pt-5 border-t border-slate-100">
-              <button
-                type="button"
-                onClick={onOpenBooking}
+              <a
+                href={siteConfig.contact.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-slate-800 bg-slate-100 group-hover:bg-emerald-600 group-hover:text-white transition-all cursor-pointer"
               >
+                <MessageSquare className="w-3.5 h-3.5" />
                 <span>Explore Google Strategy</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
 
@@ -179,8 +187,9 @@ export default function ServicesShowcase({ onOpenBooking }) {
             <div>
               {/* Header Badge */}
               <div className="flex items-center justify-between mb-5">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-200/60">
-                  03 / ATTRIBUTION INTELLIGENCE
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50/90 px-2.5 py-1 rounded-lg border border-indigo-200/70 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
+                  ATTRIBUTION INTELLIGENCE
                 </span>
                 <span className="text-[11px] font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-full">
                   Zero iOS Loss
@@ -231,14 +240,16 @@ export default function ServicesShowcase({ onOpenBooking }) {
 
             {/* Bottom CTA Button */}
             <div className="mt-8 pt-5 border-t border-slate-100">
-              <button
-                type="button"
-                onClick={onOpenBooking}
+              <a
+                href={siteConfig.contact.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-slate-800 bg-slate-100 group-hover:bg-indigo-600 group-hover:text-white transition-all cursor-pointer"
               >
+                <MessageSquare className="w-3.5 h-3.5" />
                 <span>Explore Attribution</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
 

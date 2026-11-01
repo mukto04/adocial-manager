@@ -9,8 +9,10 @@ import {
   Quote, 
   Star, 
   ExternalLink,
-  Layers
+  Layers,
+  MessageSquare
 } from "lucide-react";
+import { siteConfig } from "@/config/siteConfig";
 
 const CASE_STUDIES = [
   {
@@ -129,7 +131,7 @@ const CASE_STUDIES = [
   },
 ];
 
-export default function CaseStudyGrid({ onOpenBooking }) {
+export default function CaseStudyGrid() {
   const [activeFilter, setActiveFilter] = useState("all");
 
   const filteredStudies = activeFilter === "all" 
@@ -146,10 +148,11 @@ export default function CaseStudyGrid({ onOpenBooking }) {
         {/* Editorial Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 pb-8 border-b border-slate-200/80">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200/60">
-                04 / Audited Outcomes &amp; Proof
-              </span>
+            <div className="inline-flex items-center gap-2.5 text-xs font-mono tracking-[0.2em] uppercase font-bold text-blue-600 mb-4">
+              <span className="w-6 h-[1px] bg-blue-500/50"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+              <span>AUDITED PERFORMANCE &amp; CLIENT PROOF</span>
+              <span className="w-6 h-[1px] bg-blue-500/50"></span>
             </div>
             <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
               Documented performance across global client accounts.
@@ -281,14 +284,16 @@ export default function CaseStudyGrid({ onOpenBooking }) {
 
               {/* Action Button */}
               <div className="mt-6 pt-4 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={onOpenBooking}
+                <a
+                  href={siteConfig.contact.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-slate-800 bg-slate-100 group-hover:bg-blue-600 group-hover:text-white transition-all cursor-pointer"
                 >
+                  <MessageSquare className="w-3.5 h-3.5" />
                   <span>Request Similar Case Strategy</span>
                   <ArrowUpRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
 
             </div>
@@ -311,13 +316,15 @@ export default function CaseStudyGrid({ onOpenBooking }) {
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={onOpenBooking}
-            className="shrink-0 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full transition-all shadow-lg shadow-blue-600/25 cursor-pointer"
+          <a
+            href={siteConfig.contact.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full transition-all shadow-lg shadow-blue-600/25 cursor-pointer inline-flex items-center gap-2"
           >
-            Audit My Ad Account Free ↗
-          </button>
+            <MessageSquare className="w-3.5 h-3.5" />
+            <span>Audit My Ad Account Free ↗</span>
+          </a>
         </div>
 
       </div>

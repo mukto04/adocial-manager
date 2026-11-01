@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Sparkles, MessageSquare } from "lucide-react";
+import { siteConfig } from "@/config/siteConfig";
 
-export default function RoasCalculator({ onOpenBooking }) {
+export default function RoasCalculator() {
   const [spend, setSpend] = useState(10000);
   const [targetRoas, setTargetRoas] = useState(4.2);
 
@@ -19,10 +20,11 @@ export default function RoasCalculator({ onOpenBooking }) {
         
         {/* Editorial Section Header */}
         <div className="max-w-2xl mb-12 scroll-reveal">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200/60">
-              05 / Financial Modeling
-            </span>
+          <div className="inline-flex items-center gap-2.5 text-xs font-mono tracking-[0.2em] uppercase font-bold text-blue-600 mb-4">
+            <span className="w-6 h-[1px] bg-blue-500/50"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+            <span>FINANCIAL MODELING &amp; ROI SIMULATOR</span>
+            <span className="w-6 h-[1px] bg-blue-500/50"></span>
           </div>
           
           <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
@@ -130,16 +132,18 @@ export default function RoasCalculator({ onOpenBooking }) {
               </div>
 
               <div className="mt-6 pt-5 border-t border-slate-800/80">
-                <button
-                  type="button"
-                  onClick={onOpenBooking}
+                <a
+                  href={siteConfig.contact.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white py-3.5 px-5 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-lg shadow-blue-600/25 active:scale-95 cursor-pointer"
                 >
-                  <span>Build This Campaign Plan</span>
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Build This Campaign Plan on WhatsApp</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
                 <span className="text-[10px] text-slate-400 text-center block mt-2">
-                  15-min discovery call • Zero obligation audit
+                  Direct WhatsApp Consultation • Zero obligation audit
                 </span>
               </div>
             </div>

@@ -18,7 +18,6 @@ import PricingSection from "@/components/partials/PricingSection";
 import CallToAction from "@/components/partials/CallToAction";
 import HeroVideoShowcase from "@/components/partials/HeroVideoShowcase";
 import Footer from "@/components/partials/Footer";
-import BookingModal from "@/components/shared/BookingModal";
 import FloatingButton from "@/components/partials/FloatingButton";
 
 const ROTATING_WORDS = [
@@ -47,12 +46,11 @@ const FAQ_ITEMS = [
   },
   {
     q: "How do we get started?",
-    a: "Click 'Book a free strategy call' or message us on WhatsApp. We’ll review your business economics, past ad history, and show you our proposed scaling blueprint.",
+    a: "Message us directly on WhatsApp. We’ll review your business economics, past ad history, and show you our proposed scaling blueprint.",
   },
 ];
 
 export default function HomePage() {
-  const [bookingOpen, setBookingOpen] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [wordState, setWordState] = useState("active");
   const [openFaq, setOpenFaq] = useState(0);
@@ -125,7 +123,7 @@ export default function HomePage() {
   return (
     <>
       {/* ─── Ultra-Sleek Sticky Header ─── */}
-      <Header onOpenBooking={() => setBookingOpen(true)} />
+      <Header />
 
       {/* ─── Main Content ─── */}
       <main className="pt-20 sm:pt-24">
@@ -133,19 +131,17 @@ export default function HomePage() {
         <section className="hero" id="home">
           <div className="wrap hero-grid relative z-10">
             <div className="hero-copy-wrap">
-              {/* Executive Kicker Badge */}
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 text-blue-900 text-xs font-semibold shadow-sm backdrop-blur mb-5">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              {/* Executive Kicker Eyebrow */}
+              <div className="inline-flex items-center gap-2.5 text-xs font-mono tracking-[0.2em] uppercase font-bold text-blue-600 mb-5">
+                <span className="w-6 h-[1px] bg-blue-500/50"></span>
+                <span className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span>MEDIA BUYING &amp; CAPI • SCALING WORLDWIDE</span>
                 </span>
-                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-blue-800">
-                  Performance Media Buying &amp; CAPI
-                </span>
-                <span className="text-blue-300">|</span>
-                <span className="text-[10px] font-mono text-emerald-700 font-bold bg-white px-2.5 py-0.5 rounded-full border border-emerald-200/80">
-                  SCALING WORLDWIDE
-                </span>
+                <span className="w-6 h-[1px] bg-blue-500/50"></span>
               </div>
               
               <h1 className="hero-heading">
@@ -164,14 +160,16 @@ export default function HomePage() {
               </p>
 
               <div className="hero-actions">
-                <button 
-                  type="button"
-                  onClick={() => setBookingOpen(true)}
+                <a 
+                  href={siteConfig.contact.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider px-7 py-4 rounded-full shadow-lg shadow-blue-600/25 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                 >
-                  <span>Book Free Strategy Audit</span>
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Chat on WhatsApp</span>
                   <ArrowUpRight className="w-4 h-4" />
-                </button>
+                </a>
                 <a 
                   href="#approach" 
                   className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs uppercase tracking-wider px-6 py-4 rounded-full border border-slate-200/90 shadow-sm transition-all hover:border-slate-300"
@@ -216,7 +214,7 @@ export default function HomePage() {
         <PlatformStrip />
 
         {/* ─── Services Section ─── */}
-        <ServicesShowcase onOpenBooking={() => setBookingOpen(true)} />
+        <ServicesShowcase />
 
         {/* ─── Section 02: Cinematic Dark Architecture Studio & Live Dashboard ─── */}
         <section className="py-24 sm:py-28 bg-slate-950 text-white relative overflow-hidden border-t border-slate-800" id="approach">
@@ -230,10 +228,11 @@ export default function HomePage() {
           <div className="max-w-[1240px] mx-auto px-6 sm:px-10 relative z-10">
             {/* Header row */}
             <div className="max-w-2xl mb-14 scroll-reveal">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-400 bg-cyan-950/80 px-2.5 py-1 rounded border border-cyan-800/60">
-                  02 / The Adocial Architecture
-                </span>
+              <div className="inline-flex items-center gap-2.5 text-xs font-mono tracking-[0.2em] uppercase font-bold text-cyan-400 mb-4">
+                <span className="w-6 h-[1px] bg-cyan-400/40"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span>ENGINE ARCHITECTURE • FULL FUNNEL</span>
+                <span className="w-6 h-[1px] bg-cyan-400/40"></span>
               </div>
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-[1.2]">
                 Every click has a story. We engineer the outcome.
@@ -302,14 +301,16 @@ export default function HomePage() {
 
                 {/* Bottom Trust Action */}
                 <div className="pt-2">
-                  <button
-                    type="button"
-                    onClick={() => setBookingOpen(true)}
+                  <a
+                    href={siteConfig.contact.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full py-3.5 px-6 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Request Live Account Strategy Audit</span>
+                    <MessageSquare className="w-4 h-4" />
+                    <span>Chat on WhatsApp Directly</span>
                     <ArrowUpRight className="w-4 h-4" />
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -320,13 +321,13 @@ export default function HomePage() {
         <ProcessSection />
 
         {/* ─── Interactive ROAS & Profit Scale Calculator ─── */}
-        <RoasCalculator onOpenBooking={() => setBookingOpen(true)} />
+        <RoasCalculator />
 
         {/* ─── Verified Case Studies (Proof) ─── */}
-        <CaseStudyGrid onOpenBooking={() => setBookingOpen(true)} />
+        <CaseStudyGrid />
 
         {/* ─── Transparent Pricing Section ($300/mo flat retainer & 10-15% spend share) ─── */}
-        <PricingSection onOpenBooking={() => setBookingOpen(true)} />
+        <PricingSection />
 
         {/* ─── FAQ Section with Silky Smooth Accordion ─── */}
         <section className="py-24 bg-slate-50/70 border-t border-slate-200/80" id="faq">
@@ -334,10 +335,11 @@ export default function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               
               <div className="lg:col-span-5 scroll-reveal">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-2.5 py-1 rounded border border-blue-200/60">
-                    07 / Agency FAQ
-                  </span>
+                <div className="inline-flex items-center gap-2.5 text-xs font-mono tracking-[0.2em] uppercase font-bold text-blue-600 mb-4">
+                  <span className="w-6 h-[1px] bg-blue-500/50"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                  <span>DIRECT INQUIRIES &amp; AGENCY FAQ</span>
+                  <span className="w-6 h-[1px] bg-blue-500/50"></span>
                 </div>
                 <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-[1.2]">
                   Clear answers to common questions.
@@ -403,17 +405,14 @@ export default function HomePage() {
         </section>
 
         {/* ─── Final Call To Action Box ─── */}
-        <CallToAction onOpenBooking={() => setBookingOpen(true)} />
+        <CallToAction />
       </main>
 
       {/* ─── Footer ─── */}
       <Footer />
 
-      {/* ─── Lead Strategy Booking Modal ─── */}
-      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
-
       {/* ─── Floating Quick Action Controls ─── */}
-      <FloatingButton onOpenBooking={() => setBookingOpen(true)} />
+      <FloatingButton />
     </>
   );
 }
