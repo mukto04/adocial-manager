@@ -38,17 +38,17 @@ export default function RoasCalculator() {
         </div>
 
         {/* Interactive Calculator Stage */}
-        <div className="rounded-3xl bg-slate-900 border border-slate-800 text-white shadow-2xl p-6 sm:p-10 overflow-hidden scroll-reveal scroll-stagger-1">
+        <div className="rounded-3xl bg-slate-900 border border-slate-800 text-white shadow-2xl p-5 sm:p-8 lg:p-10 overflow-hidden scroll-reveal scroll-stagger-1">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Controls: Sliders */}
             <div className="lg:col-span-7 space-y-7">
               <div>
-                <div className="flex justify-between items-center mb-2.5">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
                   <label htmlFor="spend-range" className="text-xs sm:text-sm font-semibold text-slate-300">
                     Monthly Advertising Spend
                   </label>
-                  <span className="text-lg sm:text-xl font-bold text-white font-mono bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
+                  <span className="text-base sm:text-xl font-bold text-white font-mono bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
                     ${spend.toLocaleString()} / mo
                   </span>
                 </div>
@@ -70,11 +70,11 @@ export default function RoasCalculator() {
               </div>
 
               <div>
-                <div className="flex justify-between items-center mb-2.5">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
                   <label htmlFor="roas-range" className="text-xs sm:text-sm font-semibold text-slate-300">
                     Target Return on Ad Spend (ROAS)
                   </label>
-                  <span className="text-lg sm:text-xl font-bold text-emerald-400 font-mono bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
+                  <span className="text-base sm:text-xl font-bold text-emerald-400 font-mono bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
                     {targetRoas.toFixed(1)}x
                   </span>
                 </div>

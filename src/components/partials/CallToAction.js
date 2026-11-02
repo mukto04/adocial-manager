@@ -10,7 +10,7 @@ export default function CallToAction() {
       <div className="max-w-[1360px] mx-auto px-6 lg:px-10">
         
         {/* Architectural Blue Accent Card */}
-        <div className="relative rounded-[2.5rem] bg-gradient-to-br from-charcoal via-[#141E30] to-cobalt-950 text-white p-8 sm:p-14 lg:p-20 overflow-hidden shadow-2xl">
+        <div className="relative rounded-3xl sm:rounded-[2.5rem] bg-gradient-to-br from-charcoal via-[#141E30] to-cobalt-950 text-white p-6 sm:p-12 lg:p-16 overflow-hidden shadow-2xl">
           
           {/* Subtle Ambient Decorative Gradients */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-cobalt-600/20 rounded-full blur-3xl pointer-events-none" />
@@ -28,22 +28,22 @@ export default function CallToAction() {
             </div>
 
             {/* Headline */}
-            <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+            <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
               Ready to Make Your Ad Spend Work Smarter?
             </h2>
 
             {/* Supporting Copy */}
-            <p className="mt-6 text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
+            <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
               Tell us about your business and goals. Let&apos;s explore how a more strategic approach to advertising could help you reach qualified buyers and scale predictably.
             </p>
 
             {/* Action Buttons - 100% WhatsApp */}
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
               <a
                 href={siteConfig.contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-xl hover:shadow-emerald-600/30 hover:scale-[1.02] active:scale-[0.98]"
+                className="group inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-xl hover:shadow-emerald-600/30 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto text-center"
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
                 <span>Chat on WhatsApp Directly</span>

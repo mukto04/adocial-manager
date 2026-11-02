@@ -216,7 +216,8 @@ export default function HeroVideoShowcase() {
             <span className="s-dot dot-red"></span>
             <span className="s-dot dot-yellow"></span>
             <span className="s-dot dot-green"></span>
-            <span className="studio-title">ADOCIAL OS / 4K SERVICE REEL</span>
+            <span className="studio-title hidden xs:inline sm:inline">ADOCIAL OS / 4K SERVICE REEL</span>
+            <span className="studio-title xs:hidden sm:hidden">4K REEL</span>
           </div>
 
           <button

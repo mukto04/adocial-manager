@@ -159,12 +159,12 @@ export default function HomePage() {
                 Direct management inside your own ad accounts with 100% data transparency and predictable algorithmic scaling.
               </p>
 
-              <div className="hero-actions">
+              <div className="hero-actions flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
                 <a 
                   href={siteConfig.contact.whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider px-7 py-4 rounded-full shadow-lg shadow-blue-600/25 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider px-6 sm:px-7 py-3.5 sm:py-4 rounded-full shadow-lg shadow-blue-600/25 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-center"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>Chat on WhatsApp</span>
@@ -172,15 +172,15 @@ export default function HomePage() {
                 </a>
                 <a 
                   href="#approach" 
-                  className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs uppercase tracking-wider px-6 py-4 rounded-full border border-slate-200/90 shadow-sm transition-all hover:border-slate-300"
+                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs uppercase tracking-wider px-6 py-3.5 sm:py-4 rounded-full border border-slate-200/90 shadow-sm transition-all hover:border-slate-300 text-center"
                 >
                   View Live Engine
                 </a>
               </div>
 
               {/* Executive Proof & Principles */}
-              <div className="mt-8 pt-6 border-t border-slate-200/80 space-y-3">
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-800">
+              <div className="mt-8 pt-6 border-t border-slate-200/80 space-y-3 w-full">
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-xs font-semibold text-slate-800">
                   <div className="flex items-center gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
                     <span>Meta Certified Media Buying</span>
@@ -195,7 +195,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] font-mono text-slate-500">
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1.5 text-[11px] font-mono text-slate-500">
                   <span className="text-slate-600 font-medium">✓ Server-Side CAPI</span>
                   <span>•</span>
                   <span className="text-slate-600 font-medium">✓ 7-Day Hook Sprints</span>

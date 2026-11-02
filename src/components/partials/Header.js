@@ -41,26 +41,26 @@ export default function Header() {
           />
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/60 text-xs font-semibold text-slate-600">
+        {/* Desktop Navigation Links (Visible on Large Screens & Laptops >= 1024px) */}
+        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/60 text-xs font-semibold text-slate-600">
           {siteConfig.navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="px-4 py-2 rounded-full hover:text-charcoal hover:bg-white transition-all"
+              className="px-3 xl:px-4 py-1.5 xl:py-2 text-[11px] xl:text-xs rounded-full hover:text-charcoal hover:bg-white transition-all whitespace-nowrap"
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* Desktop Action CTAs - 100% WhatsApp Exclusive */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Desktop Action CTAs - 100% WhatsApp Exclusive (>= 1024px) */}
+        <div className="hidden lg:flex items-center gap-3">
           <a
             href={siteConfig.contact.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-sm hover:shadow-md active:scale-95"
+            className="group inline-flex items-center gap-2 px-4 xl:px-5 py-2.5 rounded-full text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-sm hover:shadow-md active:scale-95 whitespace-nowrap"
             title="Chat directly on WhatsApp"
           >
             <MessageSquare className="w-3.5 h-3.5" />
@@ -69,17 +69,30 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-lg text-charcoal hover:bg-slate-100 transition-colors"
-          aria-label="Toggle Navigation Menu"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile & Tablet Quick Controls (< 1024px) */}
+        <div className="flex lg:hidden items-center gap-2 sm:gap-2.5">
+          <a
+            href={siteConfig.contact.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-sm active:scale-95"
+            title="Chat on WhatsApp"
+          >
+            <MessageSquare className="w-3.5 h-3.5" />
+            <span className="hidden xs:inline sm:inline">WhatsApp</span>
+          </a>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-xl text-charcoal hover:bg-slate-100 transition-colors border border-slate-200/80 bg-white"
+            aria-label="Toggle Navigation Menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu (< 1024px) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -87,7 +100,7 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-white border-b border-slate-200 overflow-hidden shadow-xl"
+            className="lg:hidden bg-white border-b border-slate-200 overflow-hidden shadow-xl"
           >
             <div className="px-6 py-6 space-y-4">
               <nav className="flex flex-col space-y-3">

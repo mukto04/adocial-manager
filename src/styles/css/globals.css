@@ -24,6 +24,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -32,6 +34,7 @@ body {
   color: var(--ink);
   font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 body:before {
@@ -3013,7 +3016,8 @@ h2 {
 @media (max-width: 991px) {
   .pricing-grid {
     grid-template-columns: 1fr;
-    max-width: 520px;
+    max-width: 540px;
+    margin-inline: auto;
     gap: 24px;
   }
 }
@@ -3895,14 +3899,43 @@ h2 {
 
 /* 3. Stage Bottom Feature Rail */
 .studio-stage-footer {
-  height: 64px;
-  padding: 0 20px;
+  min-height: 58px;
+  padding: 8px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #080c14;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   z-index: 5;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .studio-stage-footer {
+    padding: 8px 10px;
+    justify-content: space-around;
+  }
+  .stage-footer-item {
+    gap: 6px;
+  }
+  .footer-meta b {
+    font-size: 10px !important;
+  }
+  .footer-meta small {
+    font-size: 8px !important;
+  }
+  .stage-footer-divider {
+    height: 18px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .stage-footer-divider {
+    display: none !important;
+  }
+  .footer-meta small {
+    display: none !important;
+  }
 }
 
 .stage-footer-item {
@@ -5874,12 +5907,14 @@ h2 {
     width: 100%;
     gap: 10px;
   }
-  .hero-actions .btn {
+  .hero-actions .btn,
+  .hero-actions a {
     width: 100%;
     justify-content: center;
     min-height: 48px;
     padding: 13px 18px;
-    font-size: 14.5px;
+    font-size: 13.5px;
+    text-align: center;
   }
   .hero-note {
     font-size: 11px;
@@ -6234,9 +6269,10 @@ h2 {
   .scene-label {
     display: none; /* Keep the inner circle ad simulation 100% clean and clear on narrow screens */
   }
-  .hero-actions .btn {
+  .hero-actions .btn,
+  .hero-actions a {
     padding: 12px 14px;
-    font-size: 13.5px;
+    font-size: 13px;
     min-height: 46px;
   }
   .service-card {
